@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>선재와 윤석, 결혼합니다</title>
 
 <!-- Open Graph -->
@@ -14,11 +14,11 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="이선재·장윤석 결혼합니다">
+<meta name="twitter:title" content="선재와 윤석, 결혼합니다">
 <meta name="twitter:description" content="저희의 새로운 출발을 응원해 주세요! 2026년 6월 20일 AT포레 웨딩홀에서 함께합니다.">
 <meta name="twitter:image" content="https://sunnyjlee.github.io/wedding/images/main.jpeg">
 
-<!-- Fonts -->
+<!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,13 +35,6 @@ body {
   color: #333;
   text-align: center;
 }
-
-/* 섹션별 배경 */
-.section-main { background: #f7f5f2; }
-.section-invite { background: #fefcf8; }
-.section-map { background: #f7f5f2; }
-.section-gallery { background: #fefcf8; }
-.section-account { background: #f7f5f2; }
 
 section {
   padding: 28px 20px;
@@ -124,23 +117,22 @@ h1 {
 .map-links {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
   gap: 8px;
+  flex-wrap: wrap;
   margin-top: 8px;
 }
 .map-links a {
-  flex: 1 1 140px;
-  max-width: 200px;
+  display: inline-block;
   padding: 8px 12px;
   border-radius: 6px;
   font-weight: 500;
   text-decoration: none;
-  text-align: center;
   color: #fff;
+  min-width: 130px;
+  text-align: center;
 }
-.map-links .naver { background-color: #03c75a; color: #fff; }
-.map-links .kakao { background-color: #FFCD00; color: #000; }
+.map-links a.naver { background-color: #03c75a; color:#fff; }
+.map-links a.kakao { background-color: #FFCD00; color:#000; }
 
 /* 구분선 */
 .divider {
@@ -204,8 +196,8 @@ h1 {
   font-size: 16px;
 }
 
-/* 복사 버튼 */
-.copy-btn {
+/* 계좌/주소 복사 버튼 */
+.account-copy-btn, .address-copy-btn {
   background-color: #888;
   color: #fff;
   border: none;
@@ -214,22 +206,8 @@ h1 {
   border-radius: 4px;
   cursor: pointer;
 }
-.copy-btn:hover { background-color: #555; }
-
-/* 토스트 메시지 */
-.toast {
-  position: fixed;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.75);
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s;
+.account-copy-btn:hover, .address-copy-btn:hover {
+  background-color: #555;
 }
 
 /* BGM 버튼 */
@@ -242,23 +220,33 @@ h1 {
   z-index: 10000;
 }
 
-/* 모바일 반응 */
+.footer {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #777;
+}
+
 @media screen and (max-width: 480px){
-  section { padding: 16px 12px; }
+  .swiper { max-width: 100%; }
+  .main-photo, .swiper-slide img, .address img { width: 100%; max-width: 100%; }
   .subtitle, .parents, .names, .date, .location, .address { font-size: 14px; }
-  .main-photo, .swiper-slide img, .address img { max-width: 100%; }
+  section { padding: 16px 12px; }
+}
+
+/* 갤러리 다운로드 방지 */
+.gallery img, .swiper-slide img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
 }
 </style>
 </head>
-
 <body>
 
-<!-- 토스트 메시지 -->
-<div class="toast" id="toast"></div>
-
 <!-- 메인 -->
-<section class="fade-scroll section-main">
-  <h1><strong>💍 SAVE THE DATE</strong></h1>
+<section class="fade-scroll">
+  <h1>💍 SAVE THE DATE</h1>
   <div class="date">2026년 6월 20일 토요일 오후 12시 30분<br/>양재 AT포레 웨딩홀</div>
   <div class="dday" id="dday"></div>
   <div class="names">🎉 이선재·장윤석 결혼합니다</div>
@@ -266,30 +254,31 @@ h1 {
 </section>
 
 <!-- 부모님 & 초대 -->
-<section class="fade-scroll section-invite">
+<section class="fade-scroll">
   <div class="parents">
     장진명·김경연의 아들 <strong>장윤석</strong><br/>
     이문주·임흥구의 딸 <strong>이선재</strong>
   </div>
-  <div class="divider"></div>
-  <div class="names">초대합니다</div>
+  <div class="divider"></div>  
+  <div class="names">초대합니다</div> 
   <div class="subtitle">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
     어여쁜 사람과 같은 방향으로 걷기로 했습니다.<br/>
-    저희의 새로운 출발을 응원해주시길 바랍니다.
+    저희의 새로운 출발을 응원해주시길 바랍니다.    
   </div>
 </section>
 
-<!-- 오시는 길 + 약도 -->
-<section class="fade-scroll section-map">
+<!-- 오시는 길 -->
+<section class="fade-scroll">
   <div class="divider"></div>
   <div class="location">🚗 오시는 길<br/>AT포레 웨딩홀</div>
   <div class="address">
     서울특별시 서초구 강남대로 27
-    <button class="copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
-  </div>
+    <button class="address-copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
+  </div> 
   <div class="map-links">
     <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank" class="naver">네이버 지도 보기</a>
+    <span>|</span>
     <a href="https://map.kakao.com/?q=AT포레%20웨딩홀" target="_blank" class="kakao">카카오맵 보기</a>
   </div>
   <div class="address">약도</div>
@@ -299,7 +288,7 @@ h1 {
 </section>
 
 <!-- 갤러리 -->
-<section class="fade-scroll section-gallery">
+<section class="fade-scroll">
   <div class="divider"></div>
   <h1>🖼️ Gallery</h1>
   <div class="swiper gallery">
@@ -321,17 +310,16 @@ h1 {
 </div>
 
 <!-- 계좌 -->
-<section class="fade-scroll section-account">
+<section class="fade-scroll">
   <div class="divider"></div>
   <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
   <div class="account" id="account">
     신부 이선재<br/>
     우리은행 1234-5678-92134
-    <button class="copy-btn" data-copy="우리은행 1234-5678-92134">복사</button>
-    <br/><br/>
+    <button class="account-copy-btn" data-copy="우리은행 1234-5678-92134">복사</button><br/><br/>
     신랑 장윤석<br/>
     국민은행 0234-346-23466
-    <button class="copy-btn" data-copy="국민은행 0234-346-23466">복사</button>
+    <button class="account-copy-btn" data-copy="국민은행 0234-346-23466">복사</button>
   </div>
   <div class="footer">
     축하해 주시는 마음에 깊이 감사드립니다
@@ -351,20 +339,14 @@ h1 {
 const target = new Date("2026-06-20T12:30:00");
 const ddayEl = document.getElementById("dday");
 setInterval(() => {
-  const now = new Date();
-  const diff = target - now;
+  const diff = target - new Date();
   const days = Math.floor(diff / (1000*60*60*24));
   ddayEl.innerText = `D-${days}`;
 }, 1000);
 
 /* 라이트박스 */
-function openLightbox(src) {
-  document.getElementById("lightboxImg").src = src;
-  document.querySelector(".lightbox").style.display = "flex";
-}
-function closeLightbox() {
-  document.querySelector(".lightbox").style.display = "none";
-}
+function openLightbox(src) { document.getElementById("lightboxImg").src = src; document.querySelector(".lightbox").style.display = "flex"; }
+function closeLightbox() { document.querySelector(".lightbox").style.display = "none"; }
 
 /* 계좌 토글 */
 function toggleAccount() {
@@ -372,51 +354,30 @@ function toggleAccount() {
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
 
-/* 토스트 메시지 */
-function showToast(msg){
-  const toast = document.getElementById("toast");
-  toast.innerText = msg;
-  toast.style.opacity = 1;
-  setTimeout(() => { toast.style.opacity = 0; }, 1500);
-}
-
-/* 복사 버튼 */
-document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
+// 복사 버튼
+document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
     const text = btn.getAttribute('data-copy');
-    navigator.clipboard.writeText(text).then(() => {
-      if(text.includes("은행")) showToast('계좌번호가 복사되었습니다');
-      else showToast('주소가 복사되었습니다');
-    });
+    navigator.clipboard.writeText(text).then(()=> alert(btn.classList.contains('account-copy-btn') ? '계좌번호가 복사되었습니다: '+text : '주소가 복사되었습니다: '+text));
   });
 });
 
 /* Swiper */
-const swiper = new Swiper(".swiper", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  loop: true,
-  pagination: { el: ".swiper-pagination", clickable: true },
-  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-});
+new Swiper(".swiper", { slidesPerView:1, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination", clickable:true}, navigation:{nextEl:".swiper-button-next", prevEl:".swiper-button-prev"} });
 
 /* BGM */
 const bgmAudio = document.getElementById("bgmAudio");
 const bgmToggle = document.getElementById("bgmToggle");
 let isPlaying = false;
-
-window.addEventListener("load", () => {
+window.addEventListener("load", ()=>{
   const playPromise = bgmAudio.play();
-  if(playPromise !== undefined){
-    playPromise.then(()=>{ isPlaying=true; bgmToggle.innerText="🔊"; })
-    .catch(()=>{ isPlaying=false; bgmToggle.innerText="🔈"; });
+  if(playPromise!==undefined){
+    playPromise.then(()=>{ isPlaying=true; bgmToggle.innerText="🔊"; }).catch(()=>{ isPlaying=false; bgmToggle.innerText="🔈"; });
   }
 });
-
-bgmToggle.addEventListener("click", () => {
-  if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; }
-  else { bgmAudio.play(); bgmToggle.innerText="🔊"; }
-  isPlaying = !isPlaying;
+bgmToggle.addEventListener("click", ()=>{
+  if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; } else { bgmAudio.play(); bgmToggle.innerText="🔊"; }
+  isPlaying=!isPlaying;
 });
 
 /* 페이드 인/아웃 */
@@ -425,12 +386,18 @@ const fadeInOnScroll = () => {
   const windowBottom = window.innerHeight;
   fadeElements.forEach(el=>{
     const rect = el.getBoundingClientRect();
-    if(rect.top < windowBottom-50){ el.style.opacity=1; el.style.transform='translateY(0)'; }
-    else { el.style.opacity=0; el.style.transform='translateY(20px)'; }
+    if(rect.top < windowBottom-50){ el.style.opacity=1; el.style.transform='translateY(0)'; } 
+    else{ el.style.opacity=0; el.style.transform='translateY(20px)'; }
   });
 };
 window.addEventListener('scroll', fadeInOnScroll);
 window.addEventListener('load', fadeInOnScroll);
+
+/* 갤러리 다운로드 방지 */
+document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
+  img.addEventListener('contextmenu', e=>e.preventDefault()); // 오른쪽 클릭
+  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false}); // 모바일 길게 누르기
+});
 </script>
 </body>
 </html>
