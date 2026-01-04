@@ -28,81 +28,223 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
 <style>
-body { margin:0; font-family:'Noto Sans KR',sans-serif; background:#f7f5f2; color:#333; text-align:center; }
-section { padding:28px 20px; transition: opacity 0.8s ease-out, transform 0.8s ease-out; opacity:1; transform:translateY(0); }
-.fade-scroll { opacity:0; transform:translateY(20px); }
-
-/* 제목 */
-h1 { font-family:'Abril Fatface',cursive; font-size:32px; letter-spacing:2px; font-weight:500; }
-.subtitle { font-size:16px; line-height:1.9; color:#555; margin-top:14px; }
-
-/* 메인 사진 */
-.main-photo { width:100%; max-height:360px; object-fit:cover; margin:20px 0; }
-
-/* 부모님 */
-.parents { font-size:18px; line-height:1.9; color:#666; margin-top:16px; }
-.names { margin-top:18px; font-size:24px; font-weight:500; color:#444; }
-.date { margin-top:8px; font-size:18px; color:#555; }
-
-/* 디데이 */
-.dday { margin-top:10px; font-size:16px; font-weight:500; }
-
-/* 장소 */
-.location { margin-top:18px; font-size:18px; font-weight:500; color:#222; }
-.address { font-size:14px; color:#666; margin-top:6px; }
-
-/* 지도 버튼 */
-.map-links { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:8px; }
-.map-links a { display:inline-block; padding:8px 12px; border-radius:6px; font-weight:500; text-decoration:none; color:#fff; min-width:130px; text-align:center; }
-.map-links a.naver { background-color:#03c75a; color:#fff; }
-.map-links a.kakao { background-color:#FFCD00; color:#000; }
-
-/* 구분선 */
-.divider { width:36px; height:1px; background:#aaa; margin:32px auto; }
-
-/* Swiper 갤러리 */
-.swiper { width:100%; max-width:480px; margin:0 auto; }
-.swiper-slide img { width:100%; border-radius:6px; cursor:pointer; }
-
-/* Swiper 좌우 버튼 회색 */
-.swiper-button-next, .swiper-button-prev { color:#888; opacity:0.7; width:36px; height:36px; }
-.swiper-button-next:hover, .swiper-button-prev:hover { opacity:1; }
-
-/* 라이트박스 */
-.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:999; }
-.lightbox img { max-width:90%; max-height:90%; }
-
-/* 계좌/마음 전하실 곳 */
-.account-section { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:16px; }
-.account-box { background:#fff; border:1px solid #ccc; border-radius:8px; padding:12px; width:260px; text-align:left; box-sizing:border-box; }
-.account-box h3 { margin:0 0 8px; font-size:18px; text-align:center; }
-
-/* 계좌 버튼 */
-.account-copy-btn { background-color:#888; color:#fff; border:none; padding:4px 8px; margin-left:4px; border-radius:4px; cursor:pointer; }
-.account-copy-btn:hover { background-color:#555; }
-
-/* 토글 */
-.toggle { font-size:20px; font-weight:500; cursor:pointer; }
-
-/* BGM 버튼 */
-#bgmToggle { position:fixed; bottom:20px; right:20px; font-size:28px; cursor:pointer; z-index:10000; }
-
-.footer { margin-top:32px; font-size:13px; color:#777; }
-
-/* 방명록 */
-#guestList li { padding:8px 12px; border-bottom:1px solid #ddd; text-align:left; }
-
-/* 반응형 */
-@media screen and (max-width:480px){
-  .swiper { max-width:100%; }
-  .main-photo, .swiper-slide img, .address img { width:100%; max-width:100%; }
-  .subtitle, .parents, .names, .date, .location, .address { font-size:14px; }
-  section { padding:16px 12px; }
-  .account-box { width:100%; max-width:300px; }
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f7f5f2;
+  color: #333;
+  text-align: center;
 }
 
-/* 갤러리 다운로드 방지 */
-.gallery img, .swiper-slide img { user-select:none; -webkit-user-drag:none; -webkit-touch-callout:none; pointer-events:auto; }
+section {
+  padding: 28px 20px;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* 제목 통일: 이선재·장윤석 결혼합니다 기준 */
+.names, .toggle, section h1 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 18px;
+  color: #444;
+}
+
+/* 서브텍스트 */
+.subtitle {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #555;
+  margin-top: 14px;
+}
+
+/* 메인 사진 */
+.main-photo {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+/* 부모님 */
+.parents {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #666;
+  margin-top: 16px;
+}
+
+/* 날짜 */
+.date {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* 디데이 */
+.dday {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 장소 */
+.location {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+}
+
+.address {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* 지도 버튼 */
+.map-links {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.map-links a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #fff;
+  min-width: 130px;
+  text-align: center;
+}
+.map-links a.naver { background-color: #03c75a; color:#fff; }
+.map-links a.kakao { background-color: #FFCD00; color:#000; }
+
+/* 구분선 */
+.divider {
+  width: 36px;
+  height: 1px;
+  background: #aaa;
+  margin: 32px auto;
+}
+
+/* Swiper 갤러리 */
+.swiper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.swiper-slide img {
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Swiper 좌우 버튼 회색 */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #888;
+  opacity: 0.7;
+  width: 36px;
+  height: 36px;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 1;
+}
+
+/* 라이트박스 */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/* 토글 */
+.toggle {
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+/* 계좌 박스 */
+.account {
+  display: none;
+  margin-top: 16px;
+  line-height: 2.1;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.account .box {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  min-width: 180px;
+  max-width: 260px;
+  text-align: left;
+}
+
+/* 계좌/주소 복사 버튼 */
+.account-copy-btn, .address-copy-btn {
+  background-color: #888;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.account-copy-btn:hover, .address-copy-btn:hover {
+  background-color: #555;
+}
+
+/* BGM 버튼 */
+#bgmToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.footer {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #777;
+}
+
+@media screen and (max-width:480px){
+  .swiper { max-width: 100%; }
+  .main-photo, .swiper-slide img, .address img { width: 100%; max-width: 100%; }
+  .subtitle, .parents, .names, .date, .location, .address { font-size: 14px; }
+  section { padding: 16px 12px; }
+  .account { flex-direction: column; align-items: center; }
+}
+
 </style>
 </head>
 <body>
@@ -123,10 +265,10 @@ h1 { font-family:'Abril Fatface',cursive; font-size:32px; letter-spacing:2px; fo
     이문주·임흥구의 딸 <strong>이선재</strong>
   </div>
   <div class="divider"></div>  
-  <div class="names">초대합니다</div> 
+  <div class="names">💝 초대합니다</div> 
   <div class="subtitle">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
-    어여쁜 사람과  걷기로 했습니다.<br/>
+    어여쁜 사람과 인생이란 여정을 함께 걷기로 했습니다.<br/>
     저희의 새로운 출발을 응원해주시길 바랍니다.    
   </div>
 </section>
@@ -134,7 +276,8 @@ h1 { font-family:'Abril Fatface',cursive; font-size:32px; letter-spacing:2px; fo
 <!-- 오시는 길 -->
 <section class="fade-scroll">
   <div class="divider"></div>
-  <div class="location">🚗 오시는 길<br/>AT포레 웨딩홀</div>
+  <div class="names">오시는 길</div>
+  <div class="location">🚗 AT포레 웨딩홀</div>
   <div class="address">
     서울특별시 서초구 강남대로 27
     <button class="address-copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
@@ -175,47 +318,42 @@ h1 { font-family:'Abril Fatface',cursive; font-size:32px; letter-spacing:2px; fo
 <!-- 마음 전하실 곳 -->
 <section class="fade-scroll">
   <div class="divider"></div>
-  <div class="names toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
-  <div class="account-section" id="account" style="display:none;">
-    <div class="account-box">
-      <h3>신부측</h3>
-      <p>이선재(본인) 우리은행 1002-855-092064 <button class="account-copy-btn" data-copy="우리은행 1002-855-092064">복사</button></p>
-      <p>이문주(아버지) 농협은행 1087-12-041677 <button class="account-copy-btn" data-copy="농협은행 1087-12-041677">복사</button></p>
-      <p>임흥구(어머니) 신한은행 110-330-538425 <button class="account-copy-btn" data-copy="신한은행 110-330-538425">복사</button></p>
+  <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
+  <div class="account" id="account">
+    <div class="box">
+      <strong>신부측</strong><br/>
+      이선재(본인) 우리은행 1002-855-092064
+      <button class="account-copy-btn" data-copy="우리 1002-855-092064">복사</button><br/>
+      이문주(아버지) 농협은행 1087-12-041677
+      <button class="account-copy-btn" data-copy="농협 1087-12-041677">복사</button><br/>
+      임흥구(어머니) 신한은행 110-330-538425
+      <button class="account-copy-btn" data-copy="신한 110-330-538425">복사</button>
     </div>
-    <div class="account-box">
-      <h3>신랑측</h3>
-      <p>장윤석(본인) 국민은행 1234-5678 <button class="account-copy-btn" data-copy="국민은행 1234-5678">복사</button></p>
-      <p>장진명(아버지) 국민은행 1234-5678 <button class="account-copy-btn" data-copy="국민은행 1234-5678">복사</button></p>
-      <p>김경연(어머니) 국민은행 1234-5678 <button class="account-copy-btn" data-copy="국민은행 1234-5678">복사</button></p>
+    <div class="box">
+      <strong>신랑측</strong><br/>
+      장윤석(본인) 국민은행 1234
+      <button class="account-copy-btn" data-copy="국민 1234">복사</button><br/>
+      장진명(아버지) 국민은행 1234
+      <button class="account-copy-btn" data-copy="국민 1234">복사</button><br/>
+      김경연(어머니) 국민은행 1234
+      <button class="account-copy-btn" data-copy="국민 1234">복사</button>
     </div>
   </div>
-  <div class="footer">축하해 주시는 마음에 깊이 감사드립니다</div>
+  <div class="footer">
+    축하해 주시는 마음에 깊이 감사드립니다
+  </div>
 </section>
-
-<script>
-// 계좌 토글
-function toggleAccount() {
-  const el = document.getElementById("account");
-  if(el.style.display === "none"){
-    el.style.display = "flex";
-  } else{
-    el.style.display = "none";
-  }
-}
-</script>
-
 
 <!-- 방명록 -->
 <section class="fade-scroll">
   <div class="divider"></div>
-  <h1>📝 방명록</h1>
-  <div style="margin:16px 0;">
+  <div class="names">방명록</div>
+  <div id="guestbook" style="margin-top:12px;">
     <input type="text" id="guestName" placeholder="이름" style="padding:6px; width:30%; max-width:120px;">
-    <input type="text" id="guestMessage" placeholder="축하 메시지" style="padding:6px; width:50%; max-width:300px;">
-    <button id="addGuest" style="padding:6px 12px; margin-left:6px; border-radius:4px; background:#888; color:#fff; border:none; cursor:pointer;">등록</button>
+    <input type="text" id="guestMessage" placeholder="메시지" style="padding:6px; width:50%; max-width:240px;">
+    <button id="guestSubmit" style="padding:6px 12px;">등록</button>
+    <div id="guestList" style="margin-top:12px; text-align:left; max-width:480px; margin:auto;"></div>
   </div>
-  <ul id="guestList"></ul>
 </section>
 
 <!-- BGM 버튼 + 오디오 -->
@@ -227,7 +365,7 @@ function toggleAccount() {
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
-// 디데이
+/* 디데이 */
 const target = new Date("2026-06-20T12:30:00");
 const ddayEl = document.getElementById("dday");
 setInterval(() => {
@@ -236,11 +374,17 @@ setInterval(() => {
   ddayEl.innerText = `D-${days}`;
 }, 1000);
 
-// 라이트박스
-function openLightbox(src){ document.getElementById("lightboxImg").src=src; document.querySelector(".lightbox").style.display="flex"; }
-function closeLightbox(){ document.querySelector(".lightbox").style.display="none"; }
+/* 라이트박스 */
+function openLightbox(src) { document.getElementById("lightboxImg").src = src; document.querySelector(".lightbox").style.display = "flex"; }
+function closeLightbox() { document.querySelector(".lightbox").style.display = "none"; }
 
-// 계좌 복사
+/* 계좌 토글 */
+function toggleAccount() {
+  const el = document.getElementById("account");
+  el.style.display = el.style.display === "flex" ? "none" : "flex";
+}
+
+// 복사 버튼
 document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const text = btn.getAttribute('data-copy');
@@ -248,25 +392,25 @@ document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
   });
 });
 
-// Swiper
-new Swiper(".swiper",{ slidesPerView:1, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination", clickable:true}, navigation:{nextEl:".swiper-button-next", prevEl:".swiper-button-prev"} });
+/* Swiper */
+new Swiper(".swiper", { slidesPerView:1, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination", clickable:true}, navigation:{nextEl:".swiper-button-next", prevEl:".swiper-button-prev"} });
 
-// BGM
+/* BGM */
 const bgmAudio = document.getElementById("bgmAudio");
 const bgmToggle = document.getElementById("bgmToggle");
-let isPlaying=false;
+let isPlaying = false;
 window.addEventListener("load", ()=>{
-  const playPromise=bgmAudio.play();
+  const playPromise = bgmAudio.play();
   if(playPromise!==undefined){
     playPromise.then(()=>{ isPlaying=true; bgmToggle.innerText="🔊"; }).catch(()=>{ isPlaying=false; bgmToggle.innerText="🔈"; });
   }
 });
 bgmToggle.addEventListener("click", ()=>{
-  if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; } else{ bgmAudio.play(); bgmToggle.innerText="🔊"; }
+  if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; } else { bgmAudio.play(); bgmToggle.innerText="🔊"; }
   isPlaying=!isPlaying;
 });
 
-// 페이드 인/아웃
+/* 페이드 인/아웃 */
 const fadeElements = document.querySelectorAll('.fade-scroll');
 const fadeInOnScroll = () => {
   const windowBottom = window.innerHeight;
@@ -279,33 +423,27 @@ const fadeInOnScroll = () => {
 window.addEventListener('scroll', fadeInOnScroll);
 window.addEventListener('load', fadeInOnScroll);
 
-// 갤러리 다운로드 방지
+/* 갤러리 다운로드 방지 */
 document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
-  img.addEventListener('contextmenu', e=>e.preventDefault());
-  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
+  img.addEventListener('contextmenu', e=>e.preventDefault()); // 오른쪽 클릭
+  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false}); // 모바일 길게 누르기
 });
 
-// 방명록
-const guestListEl = document.getElementById("guestList");
-const guestNameEl = document.getElementById("guestName");
-const guestMessageEl = document.getElementById("guestMessage");
-const addGuestBtn = document.getElementById("addGuest");
-let guests = JSON.parse(localStorage.getItem('guests')||'[]');
-guests.forEach(g=>addGuestToDOM(g.name,g.message));
-addGuestBtn.addEventListener('click', ()=>{
-  const name = guestNameEl.value.trim();
-  const message = guestMessageEl.value.trim();
-  if(!name||!message)return alert("이름과 메시지를 입력해주세요!");
-  guests.push({name,message});
-  localStorage.setItem('guests',JSON.stringify(guests));
-  addGuestToDOM(name,message);
-  guestNameEl.value=""; guestMessageEl.value="";
+/* 방명록 */
+document.getElementById("guestSubmit").addEventListener("click", ()=>{
+  const name = document.getElementById("guestName").value.trim();
+  const msg = document.getElementById("guestMessage").value.trim();
+  if(name && msg){
+    const list = document.getElementById("guestList");
+    const entry = document.createElement("div");
+    entry.innerHTML = `<strong>${name}</strong>: ${msg}`;
+    list.prepend(entry);
+    document.getElementById("guestName").value = '';
+    document.getElementById("guestMessage").value = '';
+  } else {
+    alert("이름과 메시지를 모두 입력해주세요.");
+  }
 });
-function addGuestToDOM(name,message){
-  const li=document.createElement('li');
-  li.innerHTML=`<strong>${name}</strong>: ${message}`;
-  guestListEl.appendChild(li);
-}
 </script>
 </body>
 </html>
