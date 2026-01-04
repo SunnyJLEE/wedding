@@ -190,7 +190,7 @@ section {
   display: none;
   margin-top: 16px;
   line-height: 2.1;
-  font-size: 16px;
+  font-size: 16px; /* 글자 크기 통일 */
   text-align: left;
   display: flex;
   flex-wrap: wrap;
@@ -205,6 +205,7 @@ section {
   min-width: 180px;
   max-width: 260px;
   text-align: left;
+  font-size: 16px; /* 통일 */
 }
 
 /* 계좌/주소 복사 버튼 */
@@ -237,14 +238,15 @@ section {
   color: #777;
 }
 
+/* 모바일 대응 */
 @media screen and (max-width:480px){
   .swiper { max-width: 100%; }
   .main-photo, .swiper-slide img, .address img { width: 100%; max-width: 100%; }
-  .subtitle, .parents, .names, .date, .location, .address { font-size: 14px; }
+  .subtitle, .parents, .names, .date, .location, .address, .toggle { font-size: 14px; }
   section { padding: 16px 12px; }
-  .account { flex-direction: column; align-items: center; }
+  .account { flex-direction: column; align-items: center; gap: 12px; }
+  .account .box { width: 90%; font-size: 14px; }
 }
-
 </style>
 </head>
 <body>
@@ -416,7 +418,6 @@ document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
   img.addEventListener('contextmenu', e=>e.preventDefault()); // 오른쪽 클릭
   img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false}); // 모바일 길게 누르기
 });
-
 </script>
 </body>
 </html>
