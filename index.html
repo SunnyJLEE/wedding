@@ -1,166 +1,190 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>이선재 · 장윤석 결혼합니다</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>이선재 · 장윤석 결혼합니다</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Noto Serif KR', serif;
-      background: #f7f5f2;
-      color: #333;
-      text-align: center;
-    }
+<!-- Noto Sans KR -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 
-    section {
-      padding: 28px 20px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f7f5f2;
+  color: #333;
+  text-align: center;
+}
 
-    h1 {
-      font-size: 27px;
-      letter-spacing: 2px;
-      margin-bottom: 14px;
-    }
+section {
+  padding: 32px 20px;
+}
 
-    .subtitle {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #555;
-    }
+.intro {
+  padding-top: 48px;
+}
 
-    .names {
-      margin-top: 22px;
-      font-size: 30px;
-    }
+.names {
+  font-size: 22px;
+  font-weight: 500;
+}
 
-    .date {
-      margin-top: 6px;
-      font-size: 17px;
-      color: #666;
-    }
+.date {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
 
-    .dday {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #8b6f4e;
-      letter-spacing: 1px;
-    }
+.main-photo {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  margin: 24px 0;
+}
 
-    .divider {
-      width: 40px;
-      height: 1px;
-      background: #aaa;
-      margin: 24px auto;
-    }
+.message {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+}
 
-    /* 메인 사진 */
-    .main-photo {
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      margin: 20px 0;
-    }
+.info {
+  font-size: 15px;
+  line-height: 1.9;
+}
 
-    /* 갤러리 */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-    }
+.info a {
+  color: #555;
+  text-decoration: underline;
+  font-size: 14px;
+}
 
-    .gallery img {
-      width: 100%;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+.dday {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #8b6f4e;
+}
 
-    /* 라이트박스 */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
+.divider {
+  width: 40px;
+  height: 1px;
+  background: #aaa;
+  margin: 28px auto;
+}
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-    }
+/* 갤러리 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
 
-    .location {
-      line-height: 1.8;
-      font-size: 17px;
-      margin-top: 16px;
-    }
+.gallery img {
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-    .location a {
-      color: #555;
-      text-decoration: underline;
-      font-size: 14px;
-    }
+/* 라이트박스 */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-    /* 계좌 */
-    .account-toggle {
-      font-size: 15px;
-      cursor: pointer;
-    }
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
 
-    .account {
-      display: none;
-      margin-top: 16px;
-      font-size: 14px;
-      line-height: 1.9;
-    }
+/* 계좌 */
+.toggle {
+  font-size: 15px;
+  cursor: pointer;
+}
 
-    .btn {
-      margin-top: 8px;
-      padding: 8px 16px;
-      border: 1px solid #aaa;
-      background: transparent;
-      font-size: 13px;
-      cursor: pointer;
-    }
+.account {
+  display: none;
+  margin-top: 16px;
+  font-size: 14px;
+  line-height: 1.9;
+}
 
-    .footer {
-      margin-top: 32px;
-      font-size: 12px;
-      color: #777;
-    }
-  </style>
+.btn {
+  margin-top: 8px;
+  padding: 8px 16px;
+  border: 1px solid #aaa;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* 방명록 */
+input, textarea {
+  width: 90%;
+  padding: 10px;
+  margin-top: 10px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+textarea {
+  height: 80px;
+}
+
+.footer {
+  font-size: 12px;
+  color: #777;
+  padding-bottom: 40px;
+}
+</style>
 </head>
 <body>
 
-<section>
-  <h1>SAVE THE DATE</h1>
+<!-- 1. 인트로 -->
+<section class="intro">
+  <div class="names">이선재 · 장윤석</div>
+  <div class="date">2026년 6월 20일 토요일 오후 12시 30분</div>
+</section>
 
-  <div class="subtitle">
+<!-- 2. 메인 이미지 -->
+<img src="images/main.jpeg" class="main-photo">
+
+<!-- 3. 인사말 -->
+<section>
+  <div class="message">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
     어여쁜 사람과 같은 방향으로 걷기로 했습니다.
   </div>
+</section>
 
-  <img src="images/main.jpeg" class="main-photo">
-
-  <div class="names">이선재 · 장윤석</div>
-  <div class="date">2026년 6월 20일 토요일 오후 12시 30분</div>
-  <div class="dday" id="dday"></div>
-
-  <div class="location">
+<!-- 4. 예식 정보 -->
+<section>
+  <div class="divider"></div>
+  <div class="info">
     AT포레 웨딩홀<br/>
     서울 서초구 양재동<br/>
     <a href="images/map.jpeg" target="_blank">약도 보기</a> /
-    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">네이버 지도 보기</a>
+    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">
+      네이버 지도 보기
+    </a>
   </div>
 </section>
 
+<!-- 5. D-day -->
+<section>
+  <div class="dday" id="dday"></div>
+</section>
+
+<!-- 6. 갤러리 -->
 <section>
   <div class="divider"></div>
-
   <div class="gallery">
     <img src="images/photo1.jpg" onclick="openLightbox(0)">
     <img src="images/photo2.jpg" onclick="openLightbox(1)">
@@ -173,86 +197,82 @@
   <img id="lightboxImg">
 </div>
 
+<!-- 7. 계좌 -->
 <section>
   <div class="divider"></div>
-
-  <div class="account-toggle" onclick="toggleAccount()">
-    <strong>마음 전하실 곳 ▾</strong>
-  </div>
-
+  <div class="toggle" onclick="toggleAccount()">마음 전하실 곳 ▾</div>
   <div class="account" id="accountBox">
     신부 이선재<br/>
     우리은행 1234-5678-92134<br/>
     <button class="btn" onclick="copyText('1234-5678-92134')">복사</button><br/><br/>
-
     신랑 장윤석<br/>
     국민은행 0234-346-23466<br/>
     <button class="btn" onclick="copyText('0234-346-23466')">복사</button>
   </div>
-
-  <div class="footer">
-    축하해 주시는 마음에 깊이 감사드립니다
-  </div>
 </section>
 
+<!-- 8. 방명록 -->
+<section>
+  <div class="divider"></div>
+  <h3>방명록</h3>
+
+  <input id="guestName" placeholder="이름">
+  <textarea id="guestMessage" placeholder="축하 메시지를 남겨주세요"></textarea>
+  <button class="btn" onclick="addMessage()">등록하기</button>
+
+  <div id="messages" style="margin-top:24px;text-align:left;"></div>
+</section>
+
+<!-- 9. 푸터 -->
+<div class="footer">
+  축하해 주시는 마음에 깊이 감사드립니다
+</div>
+
 <script>
-  /* D-Day */
-  const weddingDate = new Date('2026-06-20T12:30:00');
-  const today = new Date();
-  const diff = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
-  document.getElementById('dday').innerText =
-    diff > 0 ? `D-${diff}` : diff === 0 ? 'D-DAY' : 'WE ARE MARRIED';
+/* D-day */
+const weddingDate = new Date('2026-06-20T12:30:00');
+const diff = Math.ceil((weddingDate - new Date()) / (1000*60*60*24));
+document.getElementById('dday').innerText =
+  diff > 0 ? `D-${diff}` : diff === 0 ? 'D-DAY' : 'WE ARE MARRIED';
 
-  /* 갤러리 + 스와이프 */
-  const images = [
-    'images/photo1.jpg',
-    'images/photo2.jpg',
-    'images/photo3.jpg',
-    'images/photo4.jpg'
-  ];
-  let currentIndex = 0;
-  let startX = 0;
+/* 갤러리 */
+const images = [
+  'images/photo1.jpg','images/photo2.jpg','images/photo3.jpg','images/photo4.jpg'
+];
+let index = 0, startX = 0;
 
-  function openLightbox(index) {
-    currentIndex = index;
-    document.getElementById('lightboxImg').src = images[currentIndex];
-    document.getElementById('lightbox').style.display = 'flex';
-  }
+function openLightbox(i){
+  index=i;
+  document.getElementById('lightboxImg').src=images[index];
+  document.getElementById('lightbox').style.display='flex';
+}
 
-  document.getElementById('lightbox').addEventListener('click', () => {
-    document.getElementById('lightbox').style.display = 'none';
-  });
+document.getElementById('lightbox').onclick=()=> {
+  document.getElementById('lightbox').style.display='none';
+};
 
-  document.getElementById('lightbox').addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
+document.getElementById('lightbox').addEventListener('touchstart',e=>{
+  startX=e.touches[0].clientX;
+});
+document.getElementById('lightbox').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-startX;
+  if(dx>50) index=(index-1+images.length)%images.length;
+  if(dx<-50) index=(index+1)%images.length;
+  document.getElementById('lightboxImg').src=images[index];
+});
 
-  document.getElementById('lightbox').addEventListener('touchend', e => {
-    const endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) nextImage();
-    if (endX - startX > 50) prevImage();
-  });
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    document.getElementById('lightboxImg').src = images[currentIndex];
-  }
-
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    document.getElementById('lightboxImg').src = images[currentIndex];
-  }
-
-  function copyText(text) {
-    navigator.clipboard.writeText(text);
-    alert('계좌번호가 복사되었습니다');
-  }
-
-  function toggleAccount() {
-    const box = document.getElementById('accountBox');
-    box.style.display = box.style.display === 'block' ? 'none' : 'block';
-  }
+/* 계좌 */
+function toggleAccount(){
+  const box=document.getElementById('accountBox');
+  box.style.display=box.style.display==='block'?'none':'block';
+}
+function copyText(t){
+  navigator.clipboard.writeText(t);
+  alert('복사되었습니다');
+}
 </script>
+
+<!-- 🔥 Firebase 방명록 스크립트는 이전에 준 코드 그대로 이어서 붙이면 됨 -->
 
 </body>
 </html>
