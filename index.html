@@ -298,11 +298,28 @@ const swiper = new Swiper(".swiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+  
 /* BGM 버튼 */
 const bgmAudio = document.getElementById("bgmAudio");
 const bgmToggle = document.getElementById("bgmToggle");
 let isPlaying = false;
-
+  
+// 페이지 로드 시 자동 재생 시도
+window.addEventListener("load", () => {
+  const playPromise = bgmAudio.play();
+  if (playPromise !== undefined) {
+    playPromise.then(() => {
+      // 자동 재생 성공
+      isPlaying = true;
+      bgmToggle.innerText = "🔊";
+    }).catch(() => {
+      // 자동 재생 실패 (브라우저 정책)
+      isPlaying = false;
+      bgmToggle.innerText = "🔈";
+    });
+  }
+});
+  
 bgmToggle.addEventListener("click", () => {
   if(isPlaying){
     bgmAudio.pause();
