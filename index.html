@@ -4,10 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>이선재 · 장윤석 결혼합니다</title>
+<title>이선재·장윤석 결혼합니다</title>
 
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
 <style>
 body {
@@ -98,33 +101,16 @@ h1 {
   margin: 32px auto;
 }
 
-/* 갤러리 */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+/* Swiper 갤러리 */
+.swiper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
 }
-
-.gallery img {
+.swiper-slide img {
   width: 100%;
   border-radius: 6px;
   cursor: pointer;
-}
-
-/* 라이트박스 */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
 }
 
 /* 토글 */
@@ -182,13 +168,23 @@ h1 {
 <section>
   <div class="divider"></div>
 
-  <div class="gallery">
-    <img src="images/photo1.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo2.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo3.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo4.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo5.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo6.jpg" onclick="openLightbox(this.src)">
+  <!-- Swiper 갤러리 -->
+  <div class="swiper gallery">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/photo1.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="swiper-slide"><img src="images/photo2.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="swiper-slide"><img src="images/photo3.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="swiper-slide"><img src="images/photo4.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="swiper-slide"><img src="images/photo5.jpg" onclick="openLightbox(this.src)"></div>
+      <div class="swiper-slide"><img src="images/photo6.jpg" onclick="openLightbox(this.src)"></div>
+    </div>
+
+    <!-- 좌우 버튼 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- 페이지 점 -->
+    <div class="swiper-pagination"></div>
   </div>
 </section>
 
@@ -199,7 +195,7 @@ h1 {
 <section>
   <div class="divider"></div>
 
-  <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳</div>
+  <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
 
   <div class="account" id="account">
     신부 이선재<br/>
@@ -218,6 +214,7 @@ h1 {
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
+<!-- 기존 JS + Swiper JS -->
 <script>
 /* 디데이 */
 const target = new Date("2026-06-20T12:30:00");
@@ -244,6 +241,24 @@ function toggleAccount() {
   const el = document.getElementById("account");
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
+</script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+const swiper = new Swiper(".swiper", {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 </script>
 
 </body>
