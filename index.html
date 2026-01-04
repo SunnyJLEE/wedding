@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title>이선재·장윤석 결혼합니다</title>
 
 <!-- 폰트 -->
@@ -26,17 +25,26 @@ body {
 
 section {
   padding: 28px 20px;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  opacity: 1;
+  transform: translateY(0);
 }
 
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* 제목 */
 h1 {
   font-family: 'Abril Fatface', cursive;
-  font-size: 26px;
+  font-size: 32px;
   letter-spacing: 2px;
   font-weight: 500;
 }
 
 .subtitle {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.9;
   color: #555;
   margin-top: 14px;
@@ -62,6 +70,7 @@ h1 {
   margin-top: 18px;
   font-size: 24px;
   font-weight: 500;
+  color: #444;
 }
 
 .date {
@@ -82,6 +91,7 @@ h1 {
   margin-top: 18px;
   font-size: 18px;
   font-weight: 500;
+  color: #222;
 }
 
 .address {
@@ -91,10 +101,14 @@ h1 {
 }
 
 .map-links a {
-  font-size: 14px;
-  color: #555;
-  text-decoration: underline;
-  margin: 0 6px;
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #03c75a;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  margin: 6px 0;
+  font-weight: 500;
 }
 
 /* 구분선 */
@@ -117,7 +131,7 @@ h1 {
   cursor: pointer;
 }
 
-  /* Swiper 좌우 버튼 회색으로 */
+/* Swiper 좌우 버튼 회색 */
 .swiper-button-next,
 .swiper-button-prev {
   color: #888;
@@ -129,7 +143,22 @@ h1 {
 .swiper-button-prev:hover {
   opacity: 1;
 }
-  
+
+/* 라이트박스 */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
 /* 토글 */
 .toggle {
   font-size: 18px;
@@ -144,26 +173,24 @@ h1 {
   font-size: 17px;
 }
 
+/* 계좌 복사 버튼 */
+.copy-btn {
+  background-color: #888;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.copy-btn:hover {
+  background-color: #555;
+}
+
 .footer {
   margin-top: 32px;
   font-size: 13px;
   color: #777;
-}
-  
-/* 라이트박스 */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
 }
 
 /* BGM 버튼 */
@@ -175,26 +202,28 @@ h1 {
   cursor: pointer;
   z-index: 10000;
 }
-
 </style>
 </head>
 
 <body>
 
-<section>
+<!-- 메인 -->
+<section class="fade-scroll" style="background:#f7f5f2">
   <h1><strong>💍 SAVE THE DATE</strong></h1>
-      <div class="date">2026년 6월 20일 토요일 오후 12시 30분<br/>
+  <div class="date">2026년 6월 20일 토요일 오후 12시 30분<br/>
       양재 AT포레 웨딩홀</div>
   <div class="dday" id="dday"></div>
   <div class="names">🎉 이선재·장윤석 결혼합니다</div>
   <img src="images/main.jpeg" class="main-photo">
 </section>
-  
-<section>
+
+<!-- 부모님 & 초대 -->
+<section class="fade-scroll" style="background:#fefcf8">
   <div class="parents">
     장진명·김경연의 아들 <strong>장윤석</strong><br/>
-    이문주·임흥구의 딸 <strong>이선재</strong></div>
-<div class="divider"></div>  
+    이문주·임흥구의 딸 <strong>이선재</strong>
+  </div>
+  <div class="divider"></div>  
   <div class="names">초대합니다</div> 
   <div class="subtitle">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
@@ -202,27 +231,27 @@ h1 {
     저희의 새로운 출발을 응원해주시길 바랍니다.    
   </div>
 </section>
-  
-<section>
-<div class="divider"></div>
-  <div class="location">🚗 오시는 길<br/>AT포레 웨딩홀
+
+<!-- 오시는 길 + 약도 -->
+<section class="fade-scroll" style="background:#f7f5f2">
+  <div class="divider"></div>
+  <div class="location">🚗 오시는 길<br/>AT포레 웨딩홀</div>
   <div class="address">서울특별시 서초구 강남대로 27</div>
   <div class="map-links">
-    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">네이버 지도로 보기</a>
+    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">네이버 지도 보기</a>
   </div>
-  </div>
-  <!-- 약도 이미지 -->
-<div class="address">약도</div>
-<div style="margin-top:12px;">
-  <img src="images/map.jpeg" alt="약도" style="width:100%; max-width:480px; border-radius:6px;">
-</div>
-</section>
-  
-<section>
-  <div class="divider"></div>
-  <h1>🖼️ Gallery </h1>
 
-  <!-- Swiper 갤러리 -->
+  <div class="address">약도</div>
+  <div style="margin-top:12px;">
+    <img src="images/map.jpeg" alt="약도" style="width:100%; max-width:480px; border-radius:6px;">
+  </div>
+</section>
+
+<!-- 갤러리 -->
+<section class="fade-scroll" style="background:#fefcf8">
+  <div class="divider"></div>
+  <h1>🖼️ Gallery</h1>
+
   <div class="swiper gallery">
     <div class="swiper-wrapper">
       <div class="swiper-slide"><img src="images/photo1.jpg" onclick="openLightbox(this.src)"></div>
@@ -231,29 +260,31 @@ h1 {
       <div class="swiper-slide"><img src="images/photo4.jpg" onclick="openLightbox(this.src)"></div>
     </div>
 
-    <!-- 좌우 버튼 -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
-
-    <!-- 페이지 점 -->
     <div class="swiper-pagination"></div>
   </div>
 </section>
 
+<!-- 라이트박스 -->
 <div class="lightbox" onclick="closeLightbox()">
   <img id="lightboxImg">
 </div>
 
-<section>
+<!-- 계좌 -->
+<section class="fade-scroll" style="background:#f7f5f2">
   <div class="divider"></div>
 
   <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
 
   <div class="account" id="account">
     신부 이선재<br/>
-    우리은행 1234-5678-92134<br/><br/>
+    우리은행 1234-5678-92134
+    <button class="copy-btn" data-account="1234-5678-92134">복사</button>
+    <br/><br/>
     신랑 장윤석<br/>
     국민은행 0234-346-23466
+    <button class="copy-btn" data-account="0234-346-23466">복사</button>
   </div>
 
   <div class="footer">
@@ -270,15 +301,13 @@ h1 {
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
-  
 /* 디데이 */
 const target = new Date("2026-06-20T12:30:00");
 const ddayEl = document.getElementById("dday");
-
 setInterval(() => {
   const now = new Date();
   const diff = target - now;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const days = Math.floor(diff / (1000*60*60*24));
   ddayEl.innerText = `D-${days}`;
 }, 1000);
 
@@ -296,46 +325,44 @@ function toggleAccount() {
   const el = document.getElementById("account");
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
-</script>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
+/* 계좌 복사 */
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const account = btn.getAttribute('data-account');
+    navigator.clipboard.writeText(account).then(() => {
+      alert('계좌번호가 복사되었습니다: ' + account);
+    });
+  });
+});
+
+/* Swiper */
 const swiper = new Swiper(".swiper", {
   slidesPerView: 1,
   spaceBetween: 10,
   loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+  pagination: { el: ".swiper-pagination", clickable: true },
+  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
 });
-  
-/* BGM 버튼 */
+
+/* BGM */
 const bgmAudio = document.getElementById("bgmAudio");
 const bgmToggle = document.getElementById("bgmToggle");
 let isPlaying = false;
-  
-// 페이지 로드 시 자동 재생 시도
+
 window.addEventListener("load", () => {
   const playPromise = bgmAudio.play();
   if (playPromise !== undefined) {
     playPromise.then(() => {
-      // 자동 재생 성공
       isPlaying = true;
       bgmToggle.innerText = "🔊";
     }).catch(() => {
-      // 자동 재생 실패 (브라우저 정책)
       isPlaying = false;
       bgmToggle.innerText = "🔈";
     });
   }
 });
-  
+
 bgmToggle.addEventListener("click", () => {
   if(isPlaying){
     bgmAudio.pause();
@@ -346,27 +373,24 @@ bgmToggle.addEventListener("click", () => {
   }
   isPlaying = !isPlaying;
 });
-</script>
-<script>
+
+/* 페이드 인/아웃 스크롤 */
 const fadeElements = document.querySelectorAll('.fade-scroll');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY; // 스크롤 위치
-  const windowHeight = window.innerHeight;
-
+const fadeInOnScroll = () => {
+  const windowBottom = window.innerHeight;
   fadeElements.forEach(el => {
     const rect = el.getBoundingClientRect();
-    const elTop = rect.top;
-
-    // 화면 아래로 내려가면 점점 투명
-    if (elTop < windowHeight) {
-      // 화면에 보이는 정도에 따라 opacity 계산
-      const opacity = 1 - (scrollTop / (windowHeight * 1.5));
-      el.style.opacity = opacity < 0 ? 0 : opacity;
+    if(rect.top < windowBottom - 50){
+      el.style.opacity = 1;
+      el.style.transform = 'translateY(0)';
+    } else {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
     }
   });
-});
+};
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
 </script>
-
 </body>
 </html>
