@@ -6,7 +6,10 @@
   <title>이선재 · 장윤석 결혼합니다</title>
 
   <!-- 카카오 SDK -->
-  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+  Kakao.init('b2797e5f3011bde137b8cd2268d2aed2');
+</script>
 
   <style>
     body {
@@ -221,22 +224,21 @@
   }
 
   // 카카오 공유
-  Kakao.init('YOUR_KAKAO_APP_KEY');
-
   function shareKakao() {
-    Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '이선재 · 장윤석 결혼합니다',
-        description: '2026년 6월 20일 오후 12시 30분\nAT포레 웨딩홀',
-        imageUrl: 'https://sunnyjlee.github.io/wedding/images:/images/photo1.jpg',
-        link: {
-          mobileWebUrl: 'https://sunnyjlee.github.io/wedding/',
-          webUrl: 'https://sunnyjlee.github.io/wedding/'
-        }
+  Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '이선재 · 장윤석 결혼합니다',
+      description: '2026년 6월 20일 오후 12시 30분\nAT포레 웨딩홀',
+      imageUrl: 'https://sunnyjlee.github.io/wedding/images/photo1.jpg',
+      link: {
+        mobileWebUrl: 'https://sunnyjlee.github.io/wedding/',
+        webUrl: 'https://sunnyjlee.github.io/wedding/'
       }
-    });
-  }
+    }
+  });
+}
+
 </script>
 
 </body>
