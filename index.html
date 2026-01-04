@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>이선재 · 장윤석 결혼합니다</title>
 
-  <!-- 카카오 SDK -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-  Kakao.init('b2797e5f3011bde137b8cd2268d2aed2');
-</script>
-
   <style>
     body {
       margin: 0;
@@ -21,58 +15,59 @@
     }
 
     section {
-      padding: 56px 20px;
+      padding: 28px 20px;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       letter-spacing: 2px;
+      margin-bottom: 14px;
     }
 
     .subtitle {
-      font-size: 16px;
-      line-height: 1.8;
+      font-size: 15px;
+      line-height: 1.7;
       color: #555;
     }
 
     .names {
-      margin-top: 36px;
-      font-size: 22px;
+      margin-top: 22px;
+      font-size: 21px;
     }
 
     .date {
-      margin-top: 8px;
-      font-size: 15px;
+      margin-top: 6px;
+      font-size: 14px;
       color: #666;
+    }
+
+    .dday {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #8b6f4e;
+      letter-spacing: 1px;
     }
 
     .divider {
       width: 40px;
       height: 1px;
       background: #aaa;
-      margin: 40px auto;
+      margin: 24px auto;
     }
 
     /* 메인 사진 */
     .main-photo {
       width: 100%;
-      max-height: 500px;
+      max-height: 420px;
       object-fit: cover;
-      display: block;
-      margin: 24px 0;
-    }
-
-    @media (max-width: 768px) {
-      .main-photo {
-        max-height: 300px;
-      }
+      margin: 20px 0;
     }
 
     /* 갤러리 */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
     }
 
     .gallery img {
@@ -98,38 +93,49 @@
       border-radius: 8px;
     }
 
-    /* 버튼 */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: 1px solid #aaa;
-      background: transparent;
+    .location {
+      line-height: 1.8;
+      font-size: 15px;
+      margin-top: 16px;
+    }
+
+    .location a {
+      color: #555;
+      text-decoration: underline;
       font-size: 14px;
+    }
+
+    /* 계좌 */
+    .account-toggle {
+      font-size: 15px;
       cursor: pointer;
     }
 
     .account {
-      line-height: 2;
-      font-size: 15px;
+      display: none;
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 1.9;
     }
 
-    .map-img {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 24px;
+    .btn {
+      margin-top: 8px;
+      padding: 8px 16px;
+      border: 1px solid #aaa;
+      background: transparent;
+      font-size: 13px;
+      cursor: pointer;
     }
 
     .footer {
-      margin-top: 48px;
-      font-size: 13px;
+      margin-top: 32px;
+      font-size: 12px;
       color: #777;
     }
   </style>
 </head>
 <body>
 
-<!-- 인트로 -->
 <section>
   <h1>WEDDING DAY</h1>
 
@@ -138,60 +144,43 @@
     어여쁜 사람과 같은 방향으로 걷기로 했습니다.
   </div>
 
-  <!-- 메인 사진 -->
-  <img src="images/main.jpeg" alt="메인 사진" class="main-photo">
+  <img src="images/main.jpeg" class="main-photo">
 
   <div class="names">이선재 · 장윤석</div>
   <div class="date">2026년 6월 20일 토요일 오후 12시 30분</div>
+  <div class="dday" id="dday"></div>
 
-  <button class="btn" onclick="shareKakao()">카카오톡으로 공유</button>
+  <div class="location">
+    AT포레 웨딩홀<br/>
+    서울 서초구 양재동<br/>
+    <a href="images/map.jpeg" target="_blank">약도 보기</a> /
+    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">네이버 지도 보기</a>
+  </div>
 </section>
 
-<!-- 갤러리 -->
 <section>
   <div class="divider"></div>
 
   <div class="gallery">
-    <img src="images/photo1.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo2.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo3.jpg" onclick="openLightbox(this.src)">
-    <img src="images/photo4.jpg" onclick="openLightbox(this.src)">
+    <img src="images/photo1.jpg" onclick="openLightbox(0)">
+    <img src="images/photo2.jpg" onclick="openLightbox(1)">
+    <img src="images/photo3.jpg" onclick="openLightbox(2)">
+    <img src="images/photo4.jpg" onclick="openLightbox(3)">
   </div>
 </section>
 
-<!-- 라이트박스 -->
-<div class="lightbox" onclick="closeLightbox()">
+<div class="lightbox" id="lightbox">
   <img id="lightboxImg">
 </div>
 
-<!-- 예식 장소 -->
 <section>
   <div class="divider"></div>
 
-  <div>
-    AT포레 웨딩홀<br/>
-    서울 서초구 양재동
+  <div class="account-toggle" onclick="toggleAccount()">
+    <strong>마음 전하실 곳 ▾</strong>
   </div>
 
-  <!-- 약도 -->
-  <img src="images/map.jpeg" alt="약도" class="map-img">
-
-  <a
-    class="btn"
-    href="https://map.naver.com/v5/search/AT포레%20웨딩홀"
-    target="_blank"
-  >
-    네이버 지도 보기
-  </a>
-</section>
-
-<!-- 계좌 -->
-<section>
-  <div class="divider"></div>
-
-  <div class="account">
-    <strong>마음 전하실 곳</strong><br/><br/>
-
+  <div class="account" id="accountBox">
     신부 이선재<br/>
     우리은행 1234-5678-92134<br/>
     <button class="btn" onclick="copyText('1234-5678-92134')">복사</button><br/><br/>
@@ -207,38 +196,62 @@
 </section>
 
 <script>
-  // 라이트박스
-  function openLightbox(src) {
-    document.getElementById('lightboxImg').src = src;
-    document.querySelector('.lightbox').style.display = 'flex';
+  /* D-Day */
+  const weddingDate = new Date('2026-06-20T12:30:00');
+  const today = new Date();
+  const diff = Math.ceil((weddingDate - today) / (1000 * 60 * 60 * 24));
+  document.getElementById('dday').innerText =
+    diff > 0 ? `D-${diff}` : diff === 0 ? 'D-DAY' : 'WE ARE MARRIED';
+
+  /* 갤러리 + 스와이프 */
+  const images = [
+    'images/photo1.jpg',
+    'images/photo2.jpg',
+    'images/photo3.jpg',
+    'images/photo4.jpg'
+  ];
+  let currentIndex = 0;
+  let startX = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById('lightboxImg').src = images[currentIndex];
+    document.getElementById('lightbox').style.display = 'flex';
   }
 
-  function closeLightbox() {
-    document.querySelector('.lightbox').style.display = 'none';
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').style.display = 'none';
+  });
+
+  document.getElementById('lightbox').addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  document.getElementById('lightbox').addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextImage();
+    if (endX - startX > 50) prevImage();
+  });
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    document.getElementById('lightboxImg').src = images[currentIndex];
   }
 
-  // 계좌 복사
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    document.getElementById('lightboxImg').src = images[currentIndex];
+  }
+
   function copyText(text) {
     navigator.clipboard.writeText(text);
     alert('계좌번호가 복사되었습니다');
   }
 
-  // 카카오 공유
-  function shareKakao() {
-  Kakao.Share.sendDefault({
-    objectType: 'feed',
-    content: {
-      title: '이선재 · 장윤석 결혼합니다',
-      description: '2026년 6월 20일 오후 12시 30분\nAT포레 웨딩홀',
-      imageUrl: 'https://sunnyjlee.github.io/wedding/images/photo1.jpg',
-      link: {
-        mobileWebUrl: 'https://sunnyjlee.github.io/wedding/',
-        webUrl: 'https://sunnyjlee.github.io/wedding/'
-      }
-    }
-  });
-}
-
+  function toggleAccount() {
+    const box = document.getElementById('accountBox');
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+  }
 </script>
 
 </body>
