@@ -1,278 +1,275 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>이선재 · 장윤석 결혼합니다</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>이선재 ♥ 장윤석 결혼합니다</title>
 
-<!-- Noto Sans KR -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Pretendard -->
+  <link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 
-<style>
-body {
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  background: #f7f5f2;
-  color: #333;
-  text-align: center;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
-section {
-  padding: 32px 20px;
-}
+    body {
+      margin: 0;
+      background: #fafafa;
+      color: #2b2b2b;
+      line-height: 1.7;
+    }
 
-.intro {
-  padding-top: 48px;
-}
+    section {
+      padding: 20px 16px;
+      text-align: center;
+    }
 
-.names {
-  font-size: 22px;
-  font-weight: 500;
-}
+    h1 {
+      font-size: 26px;
+      font-weight: 600;
+      margin: 12px 0;
+      letter-spacing: -0.02em;
+    }
 
-.date {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #666;
-}
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
 
-.main-photo {
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  margin: 24px 0;
-}
+    p {
+      margin: 4px 0;
+      font-size: 14.5px;
+    }
 
-.message {
-  font-size: 15px;
-  line-height: 1.8;
-  color: #555;
-}
+    /* 메인 */
+    .main-img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
 
-.info {
-  font-size: 15px;
-  line-height: 1.9;
-}
+    .dday {
+      margin-top: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #555;
+    }
 
-.info a {
-  color: #555;
-  text-decoration: underline;
-  font-size: 14px;
-}
+    /* ===== 갤러리 스와이프 ===== */
+    .gallery-wrap {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      display: flex;
+      gap: 10px;
+      padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
 
-.dday {
-  margin-top: 12px;
-  font-size: 14px;
-  color: #8b6f4e;
-}
+    .gallery-wrap::-webkit-scrollbar {
+      display: none;
+    }
 
-.divider {
-  width: 40px;
-  height: 1px;
-  background: #aaa;
-  margin: 28px auto;
-}
+    .gallery-item {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+    }
 
-/* 갤러리 */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-}
+    .gallery-item img {
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
-.gallery img {
-  width: 100%;
-  border-radius: 6px;
-  cursor: pointer;
-}
+    /* 라이트박스 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
 
-/* 라이트박스 */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
 
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-}
+    /* 계좌 */
+    .account {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px;
+      margin-top: 12px;
+    }
 
-/* 계좌 */
-.toggle {
-  font-size: 15px;
-  cursor: pointer;
-}
+    .account p {
+      font-size: 15px;
+    }
 
-.account {
-  display: none;
-  margin-top: 16px;
-  font-size: 14px;
-  line-height: 1.9;
-}
+    .account button {
+      margin-top: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+    }
 
-.btn {
-  margin-top: 8px;
-  padding: 8px 16px;
-  border: 1px solid #aaa;
-  background: transparent;
-  font-size: 13px;
-  cursor: pointer;
-}
+    /* 지도 */
+    .map iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
 
-/* 방명록 */
-input, textarea {
-  width: 90%;
-  padding: 10px;
-  margin-top: 10px;
-  font-family: 'Noto Sans KR', sans-serif;
-}
+    .map-links a {
+      font-size: 14px;
+      text-decoration: underline;
+      color: #444;
+    }
 
-textarea {
-  height: 80px;
-}
+    /* 방명록 */
+    .guestbook {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: left;
+    }
 
-.footer {
-  font-size: 12px;
-  color: #777;
-  padding-bottom: 40px;
-}
-</style>
+    .guestbook input,
+    .guestbook textarea {
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+    }
+
+    .guestbook button {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      background: #333;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    .message {
+      border-top: 1px solid #eee;
+      padding: 8px 0;
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- 1. 인트로 -->
-<section class="intro">
-  <div class="names">이선재 · 장윤석</div>
-  <div class="date">2026년 6월 20일 토요일 오후 12시 30분</div>
+<section>
+  <img src="images/main.jpeg" class="main-img">
+  <h1>이선재 ♥ 장윤석</h1>
+  <p>2026년 6월 20일 토요일 오후 12시 30분</p>
+  <p class="dday" id="dday"></p>
 </section>
 
-<!-- 2. 메인 이미지 -->
-<img src="images/main.jpeg" class="main-photo">
-
-<!-- 3. 인사말 -->
 <section>
-  <div class="message">
-    어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
-    어여쁜 사람과 같은 방향으로 걷기로 했습니다.
+  <p><strong>신랑</strong><br>장진명 · 김경연의 아들 <strong>장윤석</strong></p>
+  <br>
+  <p><strong>신부</strong><br>이문주 · 임흥구의 딸 <strong>이선재</strong></p>
+</section>
+
+<section>
+  <h2>오시는 길</h2>
+  <p>서울 서초구 양재동 AT포레 웨딩홀</p>
+  <div class="map">
+    <iframe src="https://map.naver.com/v5/search/AT%ED%8F%AC%EB%A0%88%20%EC%9B%A8%EB%94%A9%ED%99%80"></iframe>
   </div>
-</section>
-
-<!-- 4. 예식 정보 -->
-<section>
-  <div class="divider"></div>
-  <div class="info">
-    AT포레 웨딩홀<br/>
-    서울 서초구 양재동<br/>
-    <a href="images/map.jpeg" target="_blank">약도 보기</a> /
-    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">
-      네이버 지도 보기
+  <div class="map-links">
+    <a href="https://map.naver.com/v5/search/AT%ED%8F%AC%EB%A0%88%20%EC%9B%A8%EB%94%A9%ED%99%80" target="_blank">
+      네이버 지도 크게 보기
     </a>
   </div>
 </section>
 
-<!-- 5. D-day -->
 <section>
-  <div class="dday" id="dday"></div>
-</section>
-
-<!-- 6. 갤러리 -->
-<section>
-  <div class="divider"></div>
-  <div class="gallery">
-    <img src="images/photo1.jpg" onclick="openLightbox(0)">
-    <img src="images/photo2.jpg" onclick="openLightbox(1)">
-    <img src="images/photo3.jpg" onclick="openLightbox(2)">
-    <img src="images/photo4.jpg" onclick="openLightbox(3)">
+  <h2>갤러리</h2>
+  <div class="gallery-wrap">
+    <div class="gallery-item"><img src="images/photo1.jpg"></div>
+    <div class="gallery-item"><img src="images/photo2.jpg"></div>
+    <div class="gallery-item"><img src="images/photo3.jpg"></div>
+    <div class="gallery-item"><img src="images/photo4.jpg"></div>
   </div>
 </section>
 
 <div class="lightbox" id="lightbox">
-  <img id="lightboxImg">
+  <img id="lightbox-img">
 </div>
 
-<!-- 7. 계좌 -->
 <section>
-  <div class="divider"></div>
-  <div class="toggle" onclick="toggleAccount()">마음 전하실 곳 ▾</div>
-  <div class="account" id="accountBox">
-    신부 이선재<br/>
-    우리은행 1234-5678-92134<br/>
-    <button class="btn" onclick="copyText('1234-5678-92134')">복사</button><br/><br/>
-    신랑 장윤석<br/>
-    국민은행 0234-346-23466<br/>
-    <button class="btn" onclick="copyText('0234-346-23466')">복사</button>
+  <h2 style="font-size:20px;">마음 전하실 곳</h2>
+
+  <div class="account">
+    <p><strong>신부측</strong><br>이선재 / 우리 1234-5678-92134</p>
+    <button onclick="copyText('우리 1234-5678-92134')">복사</button>
+  </div>
+
+  <div class="account">
+    <p><strong>신랑측</strong><br>장윤석 / 국민 0234-346-23466</p>
+    <button onclick="copyText('국민 0234-346-23466')">복사</button>
   </div>
 </section>
 
-<!-- 8. 방명록 -->
 <section>
-  <div class="divider"></div>
-  <h3>방명록</h3>
-
-  <input id="guestName" placeholder="이름">
-  <textarea id="guestMessage" placeholder="축하 메시지를 남겨주세요"></textarea>
-  <button class="btn" onclick="addMessage()">등록하기</button>
-
-  <div id="messages" style="margin-top:24px;text-align:left;"></div>
+  <h2>축하 메시지</h2>
+  <div class="guestbook">
+    <input id="name" placeholder="이름">
+    <textarea id="message" rows="3" placeholder="축하 메시지를 남겨주세요"></textarea>
+    <button onclick="addMessage()">등록</button>
+    <div id="messages"></div>
+  </div>
 </section>
 
-<!-- 9. 푸터 -->
-<div class="footer">
-  축하해 주시는 마음에 깊이 감사드립니다
-</div>
-
 <script>
-/* D-day */
-const weddingDate = new Date('2026-06-20T12:30:00');
-const diff = Math.ceil((weddingDate - new Date()) / (1000*60*60*24));
-document.getElementById('dday').innerText =
-  diff > 0 ? `D-${diff}` : diff === 0 ? 'D-DAY' : 'WE ARE MARRIED';
+  /* D-day */
+  const wedding = new Date("2026-06-20T12:30:00");
+  const diff = Math.ceil((wedding - new Date()) / 86400000);
+  document.getElementById("dday").innerText = `D-${diff}`;
 
-/* 갤러리 */
-const images = [
-  'images/photo1.jpg','images/photo2.jpg','images/photo3.jpg','images/photo4.jpg'
-];
-let index = 0, startX = 0;
+  /* 라이트박스 */
+  document.querySelectorAll(".gallery-item img").forEach(img => {
+    img.onclick = () => {
+      document.getElementById("lightbox").style.display = "flex";
+      document.getElementById("lightbox-img").src = img.src;
+    };
+  });
+  document.getElementById("lightbox").onclick = () => {
+    document.getElementById("lightbox").style.display = "none";
+  };
 
-function openLightbox(i){
-  index=i;
-  document.getElementById('lightboxImg').src=images[index];
-  document.getElementById('lightbox').style.display='flex';
-}
+  function copyText(t) {
+    navigator.clipboard.writeText(t);
+    alert("복사되었습니다");
+  }
 
-document.getElementById('lightbox').onclick=()=> {
-  document.getElementById('lightbox').style.display='none';
-};
-
-document.getElementById('lightbox').addEventListener('touchstart',e=>{
-  startX=e.touches[0].clientX;
-});
-document.getElementById('lightbox').addEventListener('touchend',e=>{
-  const dx=e.changedTouches[0].clientX-startX;
-  if(dx>50) index=(index-1+images.length)%images.length;
-  if(dx<-50) index=(index+1)%images.length;
-  document.getElementById('lightboxImg').src=images[index];
-});
-
-/* 계좌 */
-function toggleAccount(){
-  const box=document.getElementById('accountBox');
-  box.style.display=box.style.display==='block'?'none':'block';
-}
-function copyText(t){
-  navigator.clipboard.writeText(t);
-  alert('복사되었습니다');
-}
+  function addMessage() {
+    const n = name.value, m = message.value;
+    if (!n || !m) return;
+    messages.innerHTML =
+      `<div class="message"><strong>${n}</strong><br>${m}</div>` + messages.innerHTML;
+    name.value = message.value = "";
+  }
 </script>
-
-<!-- 🔥 Firebase 방명록 스크립트는 이전에 준 코드 그대로 이어서 붙이면 됨 -->
 
 </body>
 </html>
