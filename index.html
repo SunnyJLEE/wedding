@@ -98,7 +98,7 @@ h1 {
   width: 36px;
   height: 1px;
   background: #aaa;
-  margin: 22px auto;
+  margin: 32px auto;
 }
 
 /* Swiper 갤러리 */
@@ -113,6 +113,19 @@ h1 {
   cursor: pointer;
 }
 
+  /* Swiper 좌우 버튼 회색으로 */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #888;
+  opacity: 0.7;
+  width: 36px;
+  height: 36px;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 1;
+}
+  
 /* 토글 */
 .toggle {
   font-size: 18px;
@@ -132,13 +145,39 @@ h1 {
   font-size: 13px;
   color: #777;
 }
+  
+/* 라이트박스 */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/* BGM 버튼 */
+#bgmToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10000;
+}
 </style>
 </head>
 
 <body>
 
 <section>
-  <h1><strong>SAVE THE DATE</strong></h1>
+  <h1><strong>💍SAVE THE DATE</strong></h1>
 
   <div class="subtitle">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
@@ -207,28 +246,14 @@ h1 {
   </div>
 </section>
 
-<!-- BGM -->
-<script>
-const bgmAudio = document.getElementById("bgmAudio");
-const bgmToggle = document.getElementById("bgmToggle");
+<!-- BGM 버튼 + 오디오 -->
+<div id="bgmToggle">🔈</div>
+<audio id="bgmAudio" loop>
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
 
-// 초기 상태: 일시정지
-let isPlaying = false;
-
-bgmToggle.addEventListener("click", () => {
-  if(isPlaying){
-    bgmAudio.pause();
-    bgmToggle.innerText = "🔈"; // 끔
-  } else {
-    bgmAudio.play();
-    bgmToggle.innerText = "🔊"; // 켬
-  }
-  isPlaying = !isPlaying;
-});
-</script>
-
-
-<!-- 기존 JS + Swiper JS -->
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
 /* 디데이 */
 const target = new Date("2026-06-20T12:30:00");
@@ -272,6 +297,21 @@ const swiper = new Swiper(".swiper", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+});
+/* BGM 버튼 */
+const bgmAudio = document.getElementById("bgmAudio");
+const bgmToggle = document.getElementById("bgmToggle");
+let isPlaying = false;
+
+bgmToggle.addEventListener("click", () => {
+  if(isPlaying){
+    bgmAudio.pause();
+    bgmToggle.innerText = "🔈";
+  } else {
+    bgmAudio.play();
+    bgmToggle.innerText = "🔊";
+  }
+  isPlaying = !isPlaying;
 });
 </script>
 
