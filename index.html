@@ -28,213 +28,83 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
-  background: #f7f5f2;
-  color: #333;
-  text-align: center;
-}
-
-section {
-  padding: 28px 20px;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-}
+body { margin:0; font-family:'Noto Sans KR',sans-serif; background:#f7f5f2; color:#333; text-align:center; }
+section { padding:28px 20px; transition: opacity 0.8s ease-out, transform 0.8s ease-out; opacity:1; transform:translateY(0); }
+.fade-scroll { opacity:0; transform:translateY(20px); }
 
 /* 제목 */
-h1, h2 {
-  font-family: 'Abril Fatface', cursive;
-}
-
-h1 { font-size: 32px; letter-spacing: 2px; font-weight: 500; }
-h2 { font-size: 24px; margin-bottom: 12px; }
+h1 { font-family:'Abril Fatface',cursive; font-size:32px; letter-spacing:2px; font-weight:500; }
+.subtitle { font-size:16px; line-height:1.9; color:#555; margin-top:14px; }
 
 /* 메인 사진 */
-.main-photo {
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  margin: 20px 0;
-}
+.main-photo { width:100%; max-height:360px; object-fit:cover; margin:20px 0; }
 
 /* 부모님 */
-.parents {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #666;
-  margin-top: 16px;
-}
-
-.names {
-  margin-top: 18px;
-  font-size: 24px;
-  font-weight: 500;
-  color: #444;
-}
-
-.date {
-  margin-top: 8px;
-  font-size: 18px;
-  color: #555;
-}
+.parents { font-size:18px; line-height:1.9; color:#666; margin-top:16px; }
+.names { margin-top:18px; font-size:24px; font-weight:500; color:#444; }
+.date { margin-top:8px; font-size:18px; color:#555; }
 
 /* 디데이 */
-.dday {
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 500;
-}
+.dday { margin-top:10px; font-size:16px; font-weight:500; }
 
 /* 장소 */
-.location {
-  margin-top: 18px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #222;
-}
-
-.address {
-  font-size: 14px;
-  color: #666;
-  margin-top: 6px;
-}
+.location { margin-top:18px; font-size:18px; font-weight:500; color:#222; }
+.address { font-size:14px; color:#666; margin-top:6px; }
 
 /* 지도 버튼 */
-.map-links {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-.map-links a {
-  display: inline-block;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-weight: 500;
-  text-decoration: none;
-  min-width: 130px;
-  text-align: center;
-}
-.map-links a.naver { background-color: #03c75a; color:#fff; }
-.map-links a.kakao { background-color: #FFCD00; color:#000; }
+.map-links { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:8px; }
+.map-links a { display:inline-block; padding:8px 12px; border-radius:6px; font-weight:500; text-decoration:none; color:#fff; min-width:130px; text-align:center; }
+.map-links a.naver { background-color:#03c75a; color:#fff; }
+.map-links a.kakao { background-color:#FFCD00; color:#000; }
 
 /* 구분선 */
-.divider {
-  width: 36px;
-  height: 1px;
-  background: #aaa;
-  margin: 32px auto;
-}
+.divider { width:36px; height:1px; background:#aaa; margin:32px auto; }
 
 /* Swiper 갤러리 */
-.swiper {
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-}
-.swiper-slide img {
-  width: 100%;
-  border-radius: 6px;
-  cursor: pointer;
-}
+.swiper { width:100%; max-width:480px; margin:0 auto; }
+.swiper-slide img { width:100%; border-radius:6px; cursor:pointer; }
 
-/* Swiper 버튼 */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #888;
-  opacity: 0.7;
-  width: 36px;
-  height: 36px;
-}
-.swiper-button-next:hover,
-.swiper-button-prev:hover { opacity: 1; }
+/* Swiper 좌우 버튼 회색 */
+.swiper-button-next, .swiper-button-prev { color:#888; opacity:0.7; width:36px; height:36px; }
+.swiper-button-next:hover, .swiper-button-prev:hover { opacity:1; }
 
 /* 라이트박스 */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-.lightbox img { max-width: 90%; max-height: 90%; }
+.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:999; }
+.lightbox img { max-width:90%; max-height:90%; }
 
-/* 계좌 박스 */
-.account-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 16px;
-}
-.account-box {
-  flex: 1 1 200px;
-  max-width: 280px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  text-align: left;
-}
-.account-box h3 {
-  margin-top:0;
-  font-size:16px;
-  color:#444;
-}
-.account-box div { margin:6px 0; font-size:14px; line-height:1.6; }
+/* 계좌/마음 전하실 곳 */
+.account-section { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:16px; }
+.account-box { background:#fff; border:1px solid #ccc; border-radius:8px; padding:12px; width:260px; text-align:left; box-sizing:border-box; }
+.account-box h3 { margin:0 0 8px; font-size:18px; text-align:center; }
 
-/* 복사 버튼 */
-.account-copy-btn, .address-copy-btn {
-  background-color: #888;
-  color: #fff;
-  border: none;
-  padding: 4px 8px;
-  margin-left: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.account-copy-btn:hover, .address-copy-btn:hover { background-color: #555; }
+/* 계좌 버튼 */
+.account-copy-btn { background-color:#888; color:#fff; border:none; padding:4px 8px; margin-left:4px; border-radius:4px; cursor:pointer; }
+.account-copy-btn:hover { background-color:#555; }
+
+/* 토글 */
+.toggle { font-size:20px; font-weight:500; cursor:pointer; }
 
 /* BGM 버튼 */
-#bgmToggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 10000;
-}
+#bgmToggle { position:fixed; bottom:20px; right:20px; font-size:28px; cursor:pointer; z-index:10000; }
 
-.footer {
-  margin-top: 32px;
-  font-size: 13px;
-  color: #777;
-}
+.footer { margin-top:32px; font-size:13px; color:#777; }
 
 /* 방명록 */
-#guestList { text-align:left; max-height:300px; overflow-y:auto; border-top:1px solid #ccc; padding-top:8px; }
-#guestList .guest-item { border-bottom:1px solid #eee; padding:6px 0; }
+#guestList li { padding:8px 12px; border-bottom:1px solid #ddd; text-align:left; }
 
-/* 모바일 대응 */
-@media screen and (max-width: 480px){
-  .swiper { max-width: 100%; }
-  .main-photo, .swiper-slide img, .address img { width: 100%; max-width: 100%; }
-  .subtitle, .parents, .names, .date, .location, .address { font-size: 14px; }
-  section { padding: 16px 12px; }
+/* 반응형 */
+@media screen and (max-width:480px){
+  .swiper { max-width:100%; }
+  .main-photo, .swiper-slide img, .address img { width:100%; max-width:100%; }
+  .subtitle, .parents, .names, .date, .location, .address { font-size:14px; }
+  section { padding:16px 12px; }
+  .account-box { width:100%; max-width:300px; }
 }
+
+/* 갤러리 다운로드 방지 */
+.gallery img, .swiper-slide img { user-select:none; -webkit-user-drag:none; -webkit-touch-callout:none; pointer-events:auto; }
 </style>
 </head>
-
 <body>
 
 <!-- 메인 -->
@@ -302,42 +172,50 @@ h2 { font-size: 24px; margin-bottom: 12px; }
   <img id="lightboxImg">
 </div>
 
-<!-- 계좌 -->
+<!-- 마음 전하실 곳 -->
 <section class="fade-scroll">
   <div class="divider"></div>
-  <div class="names">💌 마음 전하실 곳</div>
-
-  <div class="account-container">
-    <!-- 신부측 -->
+  <div class="names toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
+  <div class="account-section" id="account" style="display:none;">
     <div class="account-box">
       <h3>신부측</h3>
-      <div>본인: 이선재 우리은행 1002-855-092064 <button class="account-copy-btn" data-copy="우리은행 1002-855-092064">복사</button></div>
-      <div>아버지: 이문주 농협은행 1087-12-041677 <button class="account-copy-btn" data-copy="농협은행 1087-12-041677">복사</button></div>
-      <div>어머니: 임흥구 신한은행 110-330-538425 <button class="account-copy-btn" data-copy="신한은행 110-330-538425">복사</button></div>
+      <p>이선재(본인) 우리은행 1002-855-092064 <button class="account-copy-btn" data-copy="우리은행 1002-855-092064">복사</button></p>
+      <p>이문주(아버지) 농협은행 1087-12-041677 <button class="account-copy-btn" data-copy="농협은행 1087-12-041677">복사</button></p>
+      <p>임흥구(어머니) 신한은행 110-330-538425 <button class="account-copy-btn" data-copy="신한은행 110-330-538425">복사</button></p>
     </div>
-
-    <!-- 신랑측 -->
     <div class="account-box">
       <h3>신랑측</h3>
-      <div>본인: 장윤석 국민은행 1234-5678-9012 <button class="account-copy-btn" data-copy="국민은행 1234-5678-9012">복사</button></div>
-      <div>아버지: 장진명 국민은행 2345-6789-0123 <button class="account-copy-btn" data-copy="국민은행 2345-6789-0123">복사</button></div>
-      <div>어머니: 김경연 국민은행 3456-7890-1234 <button class="account-copy-btn" data-copy="국민은행 3456-7890-1234">복사</button></div>
+      <p>장윤석(본인) 국민은행 1234-5678 <button class="account-copy-btn" data-copy="국민은행 1234-5678">복사</button></p>
+      <p>장진명(아버지) 국민은행 1234-5678 <button class="account-copy-btn" data-copy="국민은행 1234-5678">복사</button></p>
+      <p>김경연(어머니) 국민은행 1234-5678 <button class="account-copy-btn" data-copy="국민은행 1234-5678">복사</button></p>
     </div>
   </div>
-
   <div class="footer">축하해 주시는 마음에 깊이 감사드립니다</div>
 </section>
+
+<script>
+// 계좌 토글
+function toggleAccount() {
+  const el = document.getElementById("account");
+  if(el.style.display === "none"){
+    el.style.display = "flex";
+  } else{
+    el.style.display = "none";
+  }
+}
+</script>
+
 
 <!-- 방명록 -->
 <section class="fade-scroll">
   <div class="divider"></div>
-  <h2>✍️ 방명록</h2>
-  <div style="margin-bottom:12px; display:flex; flex-wrap:wrap; gap:6px; justify-content:center;">
-    <input type="text" id="guestName" placeholder="이름" style="padding:6px; flex:1 1 120px; max-width:150px;">
-    <input type="text" id="guestMessage" placeholder="축하 메시지" style="padding:6px; flex:2 1 200px; max-width:300px;">
-    <button onclick="addGuest()" style="padding:6px 10px;">등록</button>
+  <h1>📝 방명록</h1>
+  <div style="margin:16px 0;">
+    <input type="text" id="guestName" placeholder="이름" style="padding:6px; width:30%; max-width:120px;">
+    <input type="text" id="guestMessage" placeholder="축하 메시지" style="padding:6px; width:50%; max-width:300px;">
+    <button id="addGuest" style="padding:6px 12px; margin-left:6px; border-radius:4px; background:#888; color:#fff; border:none; cursor:pointer;">등록</button>
   </div>
-  <div id="guestList"></div>
+  <ul id="guestList"></ul>
 </section>
 
 <!-- BGM 버튼 + 오디오 -->
@@ -349,7 +227,7 @@ h2 { font-size: 24px; margin-bottom: 12px; }
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
-/* 디데이 */
+// 디데이
 const target = new Date("2026-06-20T12:30:00");
 const ddayEl = document.getElementById("dday");
 setInterval(() => {
@@ -358,14 +236,11 @@ setInterval(() => {
   ddayEl.innerText = `D-${days}`;
 }, 1000);
 
-/* 라이트박스 */
-function openLightbox(src) { 
-  document.getElementById("lightboxImg").src = src; 
-  document.querySelector(".lightbox").style.display = "flex"; 
-}
-function closeLightbox() { document.querySelector(".lightbox").style.display = "none"; }
+// 라이트박스
+function openLightbox(src){ document.getElementById("lightboxImg").src=src; document.querySelector(".lightbox").style.display="flex"; }
+function closeLightbox(){ document.querySelector(".lightbox").style.display="none"; }
 
-/* 계좌 복사 */
+// 계좌 복사
 document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const text = btn.getAttribute('data-copy');
@@ -373,25 +248,25 @@ document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
   });
 });
 
-/* Swiper */
-new Swiper(".swiper", { slidesPerView:1, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination", clickable:true}, navigation:{nextEl:".swiper-button-next", prevEl:".swiper-button-prev"} });
+// Swiper
+new Swiper(".swiper",{ slidesPerView:1, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination", clickable:true}, navigation:{nextEl:".swiper-button-next", prevEl:".swiper-button-prev"} });
 
-/* BGM */
+// BGM
 const bgmAudio = document.getElementById("bgmAudio");
 const bgmToggle = document.getElementById("bgmToggle");
-let isPlaying = false;
+let isPlaying=false;
 window.addEventListener("load", ()=>{
-  const playPromise = bgmAudio.play();
+  const playPromise=bgmAudio.play();
   if(playPromise!==undefined){
     playPromise.then(()=>{ isPlaying=true; bgmToggle.innerText="🔊"; }).catch(()=>{ isPlaying=false; bgmToggle.innerText="🔈"; });
   }
 });
 bgmToggle.addEventListener("click", ()=>{
-  if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; } else { bgmAudio.play(); bgmToggle.innerText="🔊"; }
+  if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; } else{ bgmAudio.play(); bgmToggle.innerText="🔊"; }
   isPlaying=!isPlaying;
 });
 
-/* 페이드 인/아웃 */
+// 페이드 인/아웃
 const fadeElements = document.querySelectorAll('.fade-scroll');
 const fadeInOnScroll = () => {
   const windowBottom = window.innerHeight;
@@ -404,26 +279,33 @@ const fadeInOnScroll = () => {
 window.addEventListener('scroll', fadeInOnScroll);
 window.addEventListener('load', fadeInOnScroll);
 
-/* 갤러리 다운로드 방지 */
+// 갤러리 다운로드 방지
 document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
   img.addEventListener('contextmenu', e=>e.preventDefault());
   img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
 });
 
-/* 방명록 */
-function addGuest(){
-  const name = document.getElementById("guestName").value.trim();
-  const message = document.getElementById("guestMessage").value.trim();
-  if(!name || !message){ alert("이름과 메시지를 입력해주세요!"); return; }
-  const guestList = document.getElementById("guestList");
-  const div = document.createElement("div");
-  div.className = "guest-item";
-  div.innerHTML = `<span style="font-weight:500; margin-right:6px;">${name}</span>: <span>${message}</span>`;
-  guestList.prepend(div);
-  document.getElementById("guestName").value = "";
-  document.getElementById("guestMessage").value = "";
+// 방명록
+const guestListEl = document.getElementById("guestList");
+const guestNameEl = document.getElementById("guestName");
+const guestMessageEl = document.getElementById("guestMessage");
+const addGuestBtn = document.getElementById("addGuest");
+let guests = JSON.parse(localStorage.getItem('guests')||'[]');
+guests.forEach(g=>addGuestToDOM(g.name,g.message));
+addGuestBtn.addEventListener('click', ()=>{
+  const name = guestNameEl.value.trim();
+  const message = guestMessageEl.value.trim();
+  if(!name||!message)return alert("이름과 메시지를 입력해주세요!");
+  guests.push({name,message});
+  localStorage.setItem('guests',JSON.stringify(guests));
+  addGuestToDOM(name,message);
+  guestNameEl.value=""; guestMessageEl.value="";
+});
+function addGuestToDOM(name,message){
+  const li=document.createElement('li');
+  li.innerHTML=`<strong>${name}</strong>: ${message}`;
+  guestListEl.appendChild(li);
 }
 </script>
-
 </body>
 </html>
