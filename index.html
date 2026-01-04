@@ -97,14 +97,26 @@ h1 { font-family: 'Abril Fatface', cursive; font-size:32px; letter-spacing:2px; 
 
 /* 모바일 최적화 */
 @media screen and (max-width:480px){
-  .swiper { max-width:100%; }
-  .main-photo, .swiper-slide img, .address img { width:100%; max-width:100%; }
-  .subtitle, .parents, .names, .date, .location, .address { font-size:14px; }
-  section { padding:16px 12px; }
-  .account { flex-direction:column; gap:12px; }
-  .account-box { width:100%; padding:10px 12px; }
-  .account-item { flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:8px; }
-  .account-copy-btn { align-self:flex-start; padding:4px 6px; }
+  .account {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center; /* 중앙 정렬 */
+    width: 100%;
+    padding: 0 12px; /* 좌우 여백 */
+    box-sizing: border-box;
+  }
+  .account-box {
+    width: 100%; /* 화면 폭에 맞춤 */
+    min-width: 0; /* min-width 제거 */
+    padding: 10px 12px;
+  }
+  .account-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+  .account-copy-btn { align-self: flex-start; padding: 4px 6px; }
 }
 
 /* 갤러리 다운로드 방지 */
