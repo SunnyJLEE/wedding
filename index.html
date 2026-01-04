@@ -20,6 +20,8 @@
 
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 
 <!-- Swiper CSS -->
@@ -47,88 +49,223 @@ section {
 }
 
 /* 제목 */
-h1 { font-family: 'Abril Fatface', cursive; font-size:32px; letter-spacing:2px; font-weight:500; }
-.subtitle { font-size:16px; line-height:1.9; color:#555; margin-top:14px; }
-.main-photo { width:100%; max-height:360px; object-fit:cover; margin:20px 0; }
-.parents { font-size:18px; line-height:1.9; color:#666; margin-top:16px; }
-.names { margin-top:18px; font-size:24px; font-weight:500; color:#444; }
-.date { margin-top:8px; font-size:18px; color:#555; }
-.dday { margin-top:10px; font-size:16px; font-weight:500; }
-.location { margin-top:18px; font-size:18px; font-weight:500; color:#222; }
-.address { font-size:14px; color:#666; margin-top:6px; }
+h1 {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 32px;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #555;
+  margin-top: 14px;
+}
+
+/* 메인 사진 */
+.main-photo {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+/* 부모님 */
+.parents {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #666;
+  margin-top: 16px;
+}
+
+.names {
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #444;
+}
+
+.date {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* 디데이 */
+.dday {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 장소 */
+.location {
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+}
+
+.address {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
 
 /* 지도 버튼 */
-.map-links { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-top:8px; }
-.map-links a { display:inline-block; padding:8px 12px; border-radius:6px; font-weight:500; text-decoration:none; text-align:center; min-width:130px; }
-.map-links a.naver { background-color:#03c75a; color:#fff; }
-.map-links a.kakao { background-color:#FFCD00; color:#000; }
+.map-links {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.map-links a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  min-width: 130px;
+  text-align: center;
+}
+.map-links a.naver { background-color: #03c75a; color:#fff; }
+.map-links a.kakao { background-color: #FFCD00; color:#000; }
 
 /* 구분선 */
-.divider { width:36px; height:1px; background:#aaa; margin:32px auto; }
+.divider {
+  width: 36px;
+  height: 1px;
+  background: #aaa;
+  margin: 32px auto;
+}
 
 /* Swiper 갤러리 */
-.swiper { width:100%; max-width:480px; margin:0 auto; }
-.swiper-slide img { width:100%; border-radius:6px; cursor:pointer; }
+.swiper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.swiper-slide img {
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
 /* Swiper 좌우 버튼 회색 */
-.swiper-button-next, .swiper-button-prev { color:#888; opacity:0.7; width:36px; height:36px; }
-.swiper-button-next:hover, .swiper-button-prev:hover { opacity:1; }
+.swiper-button-next,
+.swiper-button-prev {
+  color: #888;
+  opacity: 0.7;
+  width: 36px;
+  height: 36px;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 1;
+}
 
 /* 라이트박스 */
-.lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:999; }
-.lightbox img { max-width:90%; max-height:90%; }
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
 
 /* 토글 */
-.toggle { font-size:20px; font-weight:500; cursor:pointer; }
+.toggle {
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
 
 /* 계좌 */
-.account { display:none; margin-top:16px; line-height:2.1; font-size:16px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
-.account-box { background:#fff; padding:12px 16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); min-width:240px; }
-.account-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.account {
+  display: none;
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.8;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 12px;
+}
 
-/* 계좌/주소 복사 버튼 */
-.account-copy-btn, .address-copy-btn { background-color:#888; color:#fff; border:none; padding:4px 8px; border-radius:4px; cursor:pointer; }
-.account-copy-btn:hover, .address-copy-btn:hover { background-color:#555; }
+/* 신랑/신부 박스 */
+.account-box {
+  border-radius: 6px;
+  background: #f5f5f5;
+  padding: 12px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.account-box h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* 계좌 항목 */
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.account-copy-btn {
+  flex-shrink: 0;
+  background-color: #888;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.account-copy-btn:hover {
+  background-color: #555;
+}
 
 /* BGM 버튼 */
-#bgmToggle { position:fixed; bottom:20px; right:20px; font-size:28px; cursor:pointer; z-index:10000; }
+#bgmToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10000;
+}
 
-.footer { margin-top:32px; font-size:13px; color:#777; }
+.footer {
+  margin-top: 32px;
+  font-size: 13px;
+  color: #777;
+}
 
-/* 모바일 전용 */
 @media screen and (max-width:480px){
-  .account {
-    display: block;       /* flex 제거 */
-    width: 100%;          /* 화면 전체 폭 사용 */
-    padding: 0 12px;      /* 좌우 여백 */
-    box-sizing: border-box;
-  }
-  .account-box {
-    display: block;       /* 가로 정렬 제거 */
-    width: 100%;
-    margin-bottom: 12px;  /* 박스 사이 간격 */
-    padding: 12px;
-    box-sizing: border-box;
-    border-radius: 6px;
-    background: #f5f5f5;  /* 배경 넣으면 구분 가능 */
-  }
-  .account-box h3 {
-    margin: 0 0 6px 0;
-    font-size: 16px;
-  }
-  .account-item {
-    display: flex;        /* 글자+버튼 한 줄 */
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
-  .account-copy-btn {
-    margin-left: 0;
-    flex-shrink: 0;
-  }
+  .swiper { max-width: 100%; }
+  .main-photo, .swiper-slide img, .address img { width: 100%; max-width: 100%; }
+  .subtitle, .parents, .names, .date, .location, .address { font-size: 14px; }
+  section { padding: 16px 12px; }
+  .account-box { width: 100%; }
 }
 
 /* 갤러리 다운로드 방지 */
-.gallery img, .swiper-slide img { user-select:none; -webkit-user-drag:none; -webkit-touch-callout:none; pointer-events:auto; }
+.gallery img, .swiper-slide img {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: auto;
+}
 </style>
 </head>
 <body>
@@ -148,12 +285,12 @@ h1 { font-family: 'Abril Fatface', cursive; font-size:32px; letter-spacing:2px; 
     장진명·김경연의 아들 <strong>장윤석</strong><br/>
     이문주·임흥구의 딸 <strong>이선재</strong>
   </div>
-  <div class="divider"></div>
-  <div class="names">초대합니다</div>
+  <div class="divider"></div>  
+  <div class="names">초대합니다</div> 
   <div class="subtitle">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
     어여쁜 사람과 같은 방향으로 걷기로 했습니다.<br/>
-    저희의 새로운 출발을 응원해주시길 바랍니다.
+    저희의 새로운 출발을 응원해주시길 바랍니다.    
   </div>
 </section>
 
@@ -164,14 +301,16 @@ h1 { font-family: 'Abril Fatface', cursive; font-size:32px; letter-spacing:2px; 
   <div class="address">
     서울특별시 서초구 강남대로 27
     <button class="address-copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
-  </div>
+  </div> 
   <div class="map-links">
     <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank" class="naver">네이버 지도 보기</a>
     <span>|</span>
     <a href="https://map.kakao.com/?q=AT포레%20웨딩홀" target="_blank" class="kakao">카카오맵 보기</a>
   </div>
   <div class="address">약도</div>
-  <img src="images/map.jpeg" alt="약도" style="width:100%; max-width:480px; border-radius:6px; margin-top:12px;">
+  <div style="margin-top:12px;">
+    <img src="images/map.jpeg" alt="약도" style="width:100%; max-width:480px; border-radius:6px;">
+  </div>
 </section>
 
 <!-- 갤러리 -->
@@ -200,33 +339,28 @@ h1 { font-family: 'Abril Fatface', cursive; font-size:32px; letter-spacing:2px; 
 <section class="fade-scroll">
   <div class="divider"></div>
   <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
-<div class="account">
-  <div class="account-box">
-    <h3>신부측</h3>
-    <div class="account-item">
-      <span>본인 이선재 우리은행 1002-855-092064</span>
-      <button class="account-copy-btn" data-copy="우리 1234-5678-92134">복사</button>
+
+  <div class="account" id="account">
+    <!-- 신부측 -->
+    <div class="account-box">
+      <h3>신부측</h3>
+      <div class="account-item"><span>이선재 (본인) 우리은행 1002-855-092064</span><button class="account-copy-btn" data-copy="우리은행 1002-855-092064">복사</button></div>
+      <div class="account-item"><span>이문주 (아버지) 농협은행 1087-12-041677</span><button class="account-copy-btn" data-copy="농협은행 1087-12-041677">복사</button></div>
+      <div class="account-item"><span>임흥구 (어머니) 신한은행 110-330-538425</span><button class="account-copy-btn" data-copy="신한은행 110-330-538425">복사</button></div>
     </div>
-    <div class="account-item">
-      <span>아버지 이문주 농협은행 1087-12-041677</span>
-      <button class="account-copy-btn" data-copy="농협 1087-12-041677">복사</button>
+
+    <!-- 신랑측 -->
+    <div class="account-box">
+      <h3>신랑측</h3>
+      <div class="account-item"><span>장윤석 (본인) 국민은행 1234-5678-9012</span><button class="account-copy-btn" data-copy="국민은행 1234-5678-9012">복사</button></div>
+      <div class="account-item"><span>장진명 (아버지) 국민은행 2345-6789-0123</span><button class="account-copy-btn" data-copy="국민은행 2345-6789-0123">복사</button></div>
+      <div class="account-item"><span>김경연 (어머니) 국민은행 3456-7890-1234</span><button class="account-copy-btn" data-copy="국민은행 3456-7890-1234">복사</button></div>
     </div>
   </div>
 
-  <div class="account-box">
-    <h3>신랑측</h3>
-    <div class="account-item">
-      <span>본인 장윤석 국민은행 1234</span>
-      <button class="account-copy-btn" data-copy="국민 1234">복사</button>
-    </div>
-    <div class="account-item">
-      <span>아버지 장진명 국민은행 1234</span>
-      <button class="account-copy-btn" data-copy="국민 1234">복사</button>
-    </div>
+  <div class="footer">
+    축하해 주시는 마음에 깊이 감사드립니다
   </div>
-</div>
-
-  <div class="footer">축하해 주시는 마음에 깊이 감사드립니다</div>
 </section>
 
 <!-- BGM 버튼 + 오디오 -->
@@ -241,62 +375,65 @@ h1 { font-family: 'Abril Fatface', cursive; font-size:32px; letter-spacing:2px; 
 /* 디데이 */
 const target = new Date("2026-06-20T12:30:00");
 const ddayEl = document.getElementById("dday");
-setInterval(()=>{ 
+setInterval(() => {
   const diff = target - new Date();
-  const days = Math.floor(diff/(1000*60*60*24));
-  ddayEl.innerText=`D-${days}`;
-},1000);
+  const days = Math.floor(diff / (1000*60*60*24));
+  ddayEl.innerText = `D-${days}`;
+}, 1000);
 
 /* 라이트박스 */
-function openLightbox(src){document.getElementById("lightboxImg").src=src; document.querySelector(".lightbox").style.display="flex";}
-function closeLightbox(){document.querySelector(".lightbox").style.display="none";}
+function openLightbox(src) { document.getElementById("lightboxImg").src = src; document.querySelector(".lightbox").style.display = "flex"; }
+function closeLightbox() { document.querySelector(".lightbox").style.display = "none"; }
 
 /* 계좌 토글 */
-function toggleAccount(){ const el=document.getElementById("account"); el.style.display = el.style.display === "flex" ? "none" : "flex"; }
+function toggleAccount() {
+  const el = document.getElementById("account");
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
 
-/* 복사 버튼 */
+// 복사 버튼
 document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const text=btn.getAttribute('data-copy');
+  btn.addEventListener('click', ()=>{
+    const text = btn.getAttribute('data-copy');
     navigator.clipboard.writeText(text).then(()=> alert(btn.classList.contains('account-copy-btn') ? '계좌번호가 복사되었습니다: '+text : '주소가 복사되었습니다: '+text));
   });
 });
 
 /* Swiper */
-new Swiper(".swiper",{slidesPerView:1,spaceBetween:10,loop:true,pagination:{el:".swiper-pagination",clickable:true},navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"}});
+new Swiper(".swiper", { slidesPerView:1, spaceBetween:10, loop:true, pagination:{el:".swiper-pagination", clickable:true}, navigation:{nextEl:".swiper-button-next", prevEl:".swiper-button-prev"} });
 
 /* BGM */
-const bgmAudio=document.getElementById("bgmAudio");
-const bgmToggle=document.getElementById("bgmToggle");
-let isPlaying=false;
-window.addEventListener("load",()=>{
-  const playPromise=bgmAudio.play();
+const bgmAudio = document.getElementById("bgmAudio");
+const bgmToggle = document.getElementById("bgmToggle");
+let isPlaying = false;
+window.addEventListener("load", ()=>{
+  const playPromise = bgmAudio.play();
   if(playPromise!==undefined){
     playPromise.then(()=>{ isPlaying=true; bgmToggle.innerText="🔊"; }).catch(()=>{ isPlaying=false; bgmToggle.innerText="🔈"; });
   }
 });
-bgmToggle.addEventListener("click",()=>{
+bgmToggle.addEventListener("click", ()=>{
   if(isPlaying){ bgmAudio.pause(); bgmToggle.innerText="🔈"; } else { bgmAudio.play(); bgmToggle.innerText="🔊"; }
   isPlaying=!isPlaying;
 });
 
 /* 페이드 인/아웃 */
-const fadeElements=document.querySelectorAll('.fade-scroll');
-const fadeInOnScroll=()=>{
-  const windowBottom=window.innerHeight;
+const fadeElements = document.querySelectorAll('.fade-scroll');
+const fadeInOnScroll = () => {
+  const windowBottom = window.innerHeight;
   fadeElements.forEach(el=>{
-    const rect=el.getBoundingClientRect();
-    if(rect.top<windowBottom-50){ el.style.opacity=1; el.style.transform='translateY(0)'; } 
+    const rect = el.getBoundingClientRect();
+    if(rect.top < windowBottom-50){ el.style.opacity=1; el.style.transform='translateY(0)'; } 
     else{ el.style.opacity=0; el.style.transform='translateY(20px)'; }
   });
 };
-window.addEventListener('scroll',fadeInOnScroll);
-window.addEventListener('load',fadeInOnScroll);
+window.addEventListener('scroll', fadeInOnScroll);
+window.addEventListener('load', fadeInOnScroll);
 
 /* 갤러리 다운로드 방지 */
 document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
-  img.addEventListener('contextmenu', e=>e.preventDefault());
-  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
+  img.addEventListener('contextmenu', e=>e.preventDefault()); // 오른쪽 클릭
+  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false}); // 모바일 길게 누르기
 });
 </script>
 </body>
