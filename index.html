@@ -236,7 +236,10 @@ h1 {
 <section class="fade-scroll" style="background:#f7f5f2">
   <div class="divider"></div>
   <div class="location">🚗 오시는 길<br/>AT포레 웨딩홀</div>
-  <div class="address">서울특별시 서초구 강남대로 27</div>
+ <div class="address">
+    서울특별시 서초구 강남대로 27
+    <button class="copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
+  </div> 
   <div class="map-links">
     <!-- 네이버 지도 버튼 -->
     <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank" style="background-color:#03c75a; color:#fff; padding:8px 12px; border-radius:6px; font-weight:500; text-decoration:none;">네이버 지도 보기</a>
@@ -395,6 +398,17 @@ const fadeInOnScroll = () => {
 };
 window.addEventListener('scroll', fadeInOnScroll);
 window.addEventListener('load', fadeInOnScroll);
+
+// 주소 복사 버튼
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.getAttribute('data-copy');
+    navigator.clipboard.writeText(text).then(() => {
+      alert('복사되었습니다: ' + text);
+    });
+  });
+});
+
 </script>
 </body>
 </html>
