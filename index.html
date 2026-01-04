@@ -1,274 +1,234 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>이선재 ♥ 장윤석 결혼합니다</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>이선재 · 장윤석 결혼합니다</title>
 
-  <!-- Pretendard -->
-  <link rel="stylesheet" as="style" crossorigin
-    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #f7f5f2;
+  color: #333;
+  text-align: center;
+}
 
-    body {
-      margin: 0;
-      background: #fafafa;
-      color: #2b2b2b;
-      line-height: 1.7;
-    }
+section {
+  padding: 28px 20px;
+}
 
-    section {
-      padding: 20px 16px;
-      text-align: center;
-    }
+h1 {
+  font-size: 26px;
+  letter-spacing: 2px;
+}
 
-    h1 {
-      font-size: 26px;
-      font-weight: 600;
-      margin: 12px 0;
-      letter-spacing: -0.02em;
-    }
+.subtitle {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+  margin: 16px 0;
+}
 
-    h2 {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
+.names {
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 20px;
+}
 
-    p {
-      margin: 4px 0;
-      font-size: 14.5px;
-    }
+.date {
+  font-size: 15px;
+  color: #666;
+  margin-top: 8px;
+}
 
-    /* 메인 */
-    .main-img {
-      width: 100%;
-      max-height: 420px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
+#countdown {
+  margin-top: 14px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
 
-    .dday {
-      margin-top: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      color: #555;
-    }
+.divider {
+  width: 40px;
+  height: 1px;
+  background: #aaa;
+  margin: 24px auto;
+}
 
-    /* ===== 갤러리 스와이프 ===== */
-    .gallery-wrap {
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      display: flex;
-      gap: 10px;
-      padding-bottom: 8px;
-      -webkit-overflow-scrolling: touch;
-    }
+/* 메인 사진 */
+.main-photo {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 20px 0;
+}
 
-    .gallery-wrap::-webkit-scrollbar {
-      display: none;
-    }
+/* 스와이프 갤러리 */
+.swiper {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
 
-    .gallery-item {
-      flex: 0 0 80%;
-      scroll-snap-align: center;
-    }
+.swiper img {
+  width: 70%;
+  flex-shrink: 0;
+  border-radius: 6px;
+  scroll-snap-align: center;
+}
 
-    .gallery-item img {
-      width: 100%;
-      border-radius: 10px;
-      cursor: pointer;
-    }
+/* 장소 */
+.location {
+  font-size: 15px;
+  line-height: 1.8;
+}
 
-    /* 라이트박스 */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
+.links a {
+  display: inline-block;
+  margin: 8px 10px;
+  font-size: 14px;
+  text-decoration: underline;
+  color: #555;
+}
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-    }
+/* 계좌 */
+.account {
+  font-size: 18px;
+  line-height: 2.2;
+}
 
-    /* 계좌 */
-    .account {
-      background: #fff;
-      border-radius: 10px;
-      padding: 16px;
-      margin-top: 12px;
-    }
+.btn {
+  margin-top: 10px;
+  padding: 8px 18px;
+  border: 1px solid #aaa;
+  background: none;
+  cursor: pointer;
+}
 
-    .account p {
-      font-size: 15px;
-    }
+/* BGM */
+#bgmBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 14px;
+  border-radius: 50%;
+  border: 1px solid #aaa;
+  background: #fff;
+  font-size: 14px;
+}
 
-    .account button {
-      margin-top: 8px;
-      padding: 6px 14px;
-      font-size: 13px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      background: #fff;
-      cursor: pointer;
-    }
-
-    /* 지도 */
-    .map iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-    }
-
-    .map-links a {
-      font-size: 14px;
-      text-decoration: underline;
-      color: #444;
-    }
-
-    /* 방명록 */
-    .guestbook {
-      background: #fff;
-      border-radius: 10px;
-      padding: 16px;
-      text-align: left;
-    }
-
-    .guestbook input,
-    .guestbook textarea {
-      width: 100%;
-      margin-bottom: 8px;
-      padding: 8px;
-      font-size: 14px;
-      border-radius: 6px;
-      border: 1px solid #ddd;
-    }
-
-    .guestbook button {
-      width: 100%;
-      padding: 8px;
-      border-radius: 6px;
-      border: none;
-      background: #333;
-      color: #fff;
-      font-size: 14px;
-    }
-
-    .message {
-      border-top: 1px solid #eee;
-      padding: 8px 0;
-      font-size: 13px;
-    }
-  </style>
+.footer {
+  margin: 36px 0 20px;
+  font-size: 13px;
+  color: #777;
+}
+</style>
 </head>
 
 <body>
 
 <section>
-  <img src="images/main.jpeg" class="main-img">
-  <h1>이선재 ♥ 장윤석</h1>
-  <p>2026년 6월 20일 토요일 오후 12시 30분</p>
-  <p class="dday" id="dday"></p>
-</section>
+  <h1>WEDDING DAY</h1>
 
-<section>
-  <p><strong>신랑</strong><br>장진명 · 김경연의 아들 <strong>장윤석</strong></p>
-  <br>
-  <p><strong>신부</strong><br>이문주 · 임흥구의 딸 <strong>이선재</strong></p>
-</section>
-
-<section>
-  <h2>오시는 길</h2>
-  <p>서울 서초구 양재동 AT포레 웨딩홀</p>
-  <div class="map">
-    <iframe src="https://map.naver.com/v5/search/AT%ED%8F%AC%EB%A0%88%20%EC%9B%A8%EB%94%A9%ED%99%80"></iframe>
+  <div class="subtitle">
+    어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
+    어여쁜 사람과 같은 방향으로 걷기로 했습니다.
   </div>
-  <div class="map-links">
-    <a href="https://map.naver.com/v5/search/AT%ED%8F%AC%EB%A0%88%20%EC%9B%A8%EB%94%A9%ED%99%80" target="_blank">
-      네이버 지도 크게 보기
+
+  <img src="images/main.jpeg" class="main-photo">
+
+  <div class="names">이선재 · 장윤석</div>
+  <div class="date">2026년 6월 20일 토요일 오후 12시 30분</div>
+  <div id="countdown"></div>
+</section>
+
+<section>
+  <div class="divider"></div>
+
+  <div class="swiper">
+    <img src="images/photo1.jpg">
+    <img src="images/photo2.jpg">
+    <img src="images/photo3.jpg">
+    <img src="images/photo4.jpg">
+  </div>
+</section>
+
+<section>
+  <div class="divider"></div>
+
+  <div class="location">
+    AT포레 웨딩홀<br/>
+    서울 서초구 양재동
+  </div>
+
+  <div class="links">
+    <a href="images/map.jpeg" target="_blank">약도 보기</a>
+    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">
+      네이버 지도 보기
     </a>
   </div>
 </section>
 
 <section>
-  <h2>갤러리</h2>
-  <div class="gallery-wrap">
-    <div class="gallery-item"><img src="images/photo1.jpg"></div>
-    <div class="gallery-item"><img src="images/photo2.jpg"></div>
-    <div class="gallery-item"><img src="images/photo3.jpg"></div>
-    <div class="gallery-item"><img src="images/photo4.jpg"></div>
-  </div>
-</section>
-
-<div class="lightbox" id="lightbox">
-  <img id="lightbox-img">
-</div>
-
-<section>
-  <h2 style="font-size:20px;">마음 전하실 곳</h2>
+  <div class="divider"></div>
 
   <div class="account">
-    <p><strong>신부측</strong><br>이선재 / 우리 1234-5678-92134</p>
-    <button onclick="copyText('우리 1234-5678-92134')">복사</button>
+    <strong>마음 전하실 곳</strong><br/><br/>
+
+    신부 이선재<br/>
+    우리은행 1234-5678-92134<br/>
+    <button class="btn" onclick="copyText('1234-5678-92134')">복사</button><br/><br/>
+
+    신랑 장윤석<br/>
+    국민은행 0234-346-23466<br/>
+    <button class="btn" onclick="copyText('0234-346-23466')">복사</button>
   </div>
 
-  <div class="account">
-    <p><strong>신랑측</strong><br>장윤석 / 국민 0234-346-23466</p>
-    <button onclick="copyText('국민 0234-346-23466')">복사</button>
+  <div class="footer">
+    축하해 주시는 마음에 깊이 감사드립니다
   </div>
 </section>
 
-<section>
-  <h2>축하 메시지</h2>
-  <div class="guestbook">
-    <input id="name" placeholder="이름">
-    <textarea id="message" rows="3" placeholder="축하 메시지를 남겨주세요"></textarea>
-    <button onclick="addMessage()">등록</button>
-    <div id="messages"></div>
-  </div>
-</section>
+<!-- BGM -->
+<audio id="bgm" loop>
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+<button id="bgmBtn" onclick="toggleBgm()">♪</button>
 
 <script>
-  /* D-day */
-  const wedding = new Date("2026-06-20T12:30:00");
-  const diff = Math.ceil((wedding - new Date()) / 86400000);
-  document.getElementById("dday").innerText = `D-${diff}`;
+// 디데이
+const target = new Date("2026-06-20T12:30:00");
+setInterval(() => {
+  const now = new Date();
+  const diff = target - now;
+  const d = Math.floor(diff / (1000*60*60*24));
+  document.getElementById("countdown").innerText =
+    d >= 0 ? `D-${d}` : "오늘 결혼합니다";
+}, 1000);
 
-  /* 라이트박스 */
-  document.querySelectorAll(".gallery-item img").forEach(img => {
-    img.onclick = () => {
-      document.getElementById("lightbox").style.display = "flex";
-      document.getElementById("lightbox-img").src = img.src;
-    };
-  });
-  document.getElementById("lightbox").onclick = () => {
-    document.getElementById("lightbox").style.display = "none";
-  };
+// 계좌 복사
+function copyText(t) {
+  navigator.clipboard.writeText(t);
+  alert("복사되었습니다");
+}
 
-  function copyText(t) {
-    navigator.clipboard.writeText(t);
-    alert("복사되었습니다");
+// BGM
+const bgm = document.getElementById("bgm");
+let playing = false;
+function toggleBgm() {
+  if (playing) {
+    bgm.pause();
+  } else {
+    bgm.play();
   }
-
-  function addMessage() {
-    const n = name.value, m = message.value;
-    if (!n || !m) return;
-    messages.innerHTML =
-      `<div class="message"><strong>${n}</strong><br>${m}</div>` + messages.innerHTML;
-    name.value = message.value = "";
-  }
+  playing = !playing;
+}
 </script>
 
 </body>
