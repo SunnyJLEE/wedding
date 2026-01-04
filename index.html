@@ -49,19 +49,12 @@ section {
 }
 
 /* 제목 */
-h1 {
+h1, h2 {
   font-family: 'Abril Fatface', cursive;
-  font-size: 32px;
-  letter-spacing: 2px;
-  font-weight: 500;
 }
 
-.subtitle {
-  font-size: 16px;
-  line-height: 1.9;
-  color: #555;
-  margin-top: 14px;
-}
+h1 { font-size: 32px; letter-spacing: 2px; font-weight: 500; }
+h2 { font-size: 24px; margin-bottom: 12px; }
 
 /* 메인 사진 */
 .main-photo {
@@ -153,7 +146,7 @@ h1 {
   cursor: pointer;
 }
 
-/* Swiper 좌우 버튼 회색 */
+/* Swiper 버튼 */
 .swiper-button-next,
 .swiper-button-prev {
   color: #888;
@@ -162,9 +155,7 @@ h1 {
   height: 36px;
 }
 .swiper-button-next:hover,
-.swiper-button-prev:hover {
-  opacity: 1;
-}
+.swiper-button-prev:hover { opacity: 1; }
 
 /* 라이트박스 */
 .lightbox {
@@ -176,64 +167,43 @@ h1 {
   align-items: center;
   z-index: 999;
 }
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-}
+.lightbox img { max-width: 90%; max-height: 90%; }
 
-/* 토글 */
-.toggle {
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-/* 계좌 */
-.account {
-  display: none;
+/* 계좌 박스 */
+.account-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
   margin-top: 16px;
-  font-size: 16px;
-  line-height: 1.8;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0 12px;
 }
-
-/* 신랑/신부 박스 */
 .account-box {
-  border-radius: 6px;
-  background: #f5f5f5;
+  flex: 1 1 200px;
+  max-width: 280px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   padding: 12px;
-  margin-bottom: 12px;
   text-align: left;
 }
-
 .account-box h3 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
-  font-weight: 500;
+  margin-top:0;
+  font-size:16px;
+  color:#444;
 }
+.account-box div { margin:6px 0; font-size:14px; line-height:1.6; }
 
-/* 계좌 항목 */
-.account-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.account-copy-btn {
-  flex-shrink: 0;
+/* 복사 버튼 */
+.account-copy-btn, .address-copy-btn {
   background-color: #888;
   color: #fff;
   border: none;
   padding: 4px 8px;
+  margin-left: 8px;
   border-radius: 4px;
   cursor: pointer;
 }
-.account-copy-btn:hover {
-  background-color: #555;
-}
+.account-copy-btn:hover, .address-copy-btn:hover { background-color: #555; }
 
 /* BGM 버튼 */
 #bgmToggle {
@@ -251,23 +221,20 @@ h1 {
   color: #777;
 }
 
-@media screen and (max-width:480px){
+/* 방명록 */
+#guestList { text-align:left; max-height:300px; overflow-y:auto; border-top:1px solid #ccc; padding-top:8px; }
+#guestList .guest-item { border-bottom:1px solid #eee; padding:6px 0; }
+
+/* 모바일 대응 */
+@media screen and (max-width: 480px){
   .swiper { max-width: 100%; }
   .main-photo, .swiper-slide img, .address img { width: 100%; max-width: 100%; }
   .subtitle, .parents, .names, .date, .location, .address { font-size: 14px; }
   section { padding: 16px 12px; }
-  .account-box { width: 100%; }
-}
-
-/* 갤러리 다운로드 방지 */
-.gallery img, .swiper-slide img {
-  user-select: none;
-  -webkit-user-drag: none;
-  -webkit-touch-callout: none;
-  pointer-events: auto;
 }
 </style>
 </head>
+
 <body>
 
 <!-- 메인 -->
@@ -338,29 +305,39 @@ h1 {
 <!-- 계좌 -->
 <section class="fade-scroll">
   <div class="divider"></div>
-  <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳 🔽</div>
+  <div class="names">💌 마음 전하실 곳</div>
 
-  <div class="account" id="account">
+  <div class="account-container">
     <!-- 신부측 -->
     <div class="account-box">
       <h3>신부측</h3>
-      <div class="account-item"><span>이선재 (본인) 우리은행 1002-855-092064</span><button class="account-copy-btn" data-copy="우리은행 1002-855-092064">복사</button></div>
-      <div class="account-item"><span>이문주 (아버지) 농협은행 1087-12-041677</span><button class="account-copy-btn" data-copy="농협은행 1087-12-041677">복사</button></div>
-      <div class="account-item"><span>임흥구 (어머니) 신한은행 110-330-538425</span><button class="account-copy-btn" data-copy="신한은행 110-330-538425">복사</button></div>
+      <div>본인: 이선재 우리은행 1002-855-092064 <button class="account-copy-btn" data-copy="우리은행 1002-855-092064">복사</button></div>
+      <div>아버지: 이문주 농협은행 1087-12-041677 <button class="account-copy-btn" data-copy="농협은행 1087-12-041677">복사</button></div>
+      <div>어머니: 임흥구 신한은행 110-330-538425 <button class="account-copy-btn" data-copy="신한은행 110-330-538425">복사</button></div>
     </div>
 
     <!-- 신랑측 -->
     <div class="account-box">
       <h3>신랑측</h3>
-      <div class="account-item"><span>장윤석 (본인) 국민은행 1234-5678-9012</span><button class="account-copy-btn" data-copy="국민은행 1234-5678-9012">복사</button></div>
-      <div class="account-item"><span>장진명 (아버지) 국민은행 2345-6789-0123</span><button class="account-copy-btn" data-copy="국민은행 2345-6789-0123">복사</button></div>
-      <div class="account-item"><span>김경연 (어머니) 국민은행 3456-7890-1234</span><button class="account-copy-btn" data-copy="국민은행 3456-7890-1234">복사</button></div>
+      <div>본인: 장윤석 국민은행 1234-5678-9012 <button class="account-copy-btn" data-copy="국민은행 1234-5678-9012">복사</button></div>
+      <div>아버지: 장진명 국민은행 2345-6789-0123 <button class="account-copy-btn" data-copy="국민은행 2345-6789-0123">복사</button></div>
+      <div>어머니: 김경연 국민은행 3456-7890-1234 <button class="account-copy-btn" data-copy="국민은행 3456-7890-1234">복사</button></div>
     </div>
   </div>
 
-  <div class="footer">
-    축하해 주시는 마음에 깊이 감사드립니다
+  <div class="footer">축하해 주시는 마음에 깊이 감사드립니다</div>
+</section>
+
+<!-- 방명록 -->
+<section class="fade-scroll">
+  <div class="divider"></div>
+  <h2>✍️ 방명록</h2>
+  <div style="margin-bottom:12px; display:flex; flex-wrap:wrap; gap:6px; justify-content:center;">
+    <input type="text" id="guestName" placeholder="이름" style="padding:6px; flex:1 1 120px; max-width:150px;">
+    <input type="text" id="guestMessage" placeholder="축하 메시지" style="padding:6px; flex:2 1 200px; max-width:300px;">
+    <button onclick="addGuest()" style="padding:6px 10px;">등록</button>
   </div>
+  <div id="guestList"></div>
 </section>
 
 <!-- BGM 버튼 + 오디오 -->
@@ -382,16 +359,13 @@ setInterval(() => {
 }, 1000);
 
 /* 라이트박스 */
-function openLightbox(src) { document.getElementById("lightboxImg").src = src; document.querySelector(".lightbox").style.display = "flex"; }
+function openLightbox(src) { 
+  document.getElementById("lightboxImg").src = src; 
+  document.querySelector(".lightbox").style.display = "flex"; 
+}
 function closeLightbox() { document.querySelector(".lightbox").style.display = "none"; }
 
-/* 계좌 토글 */
-function toggleAccount() {
-  const el = document.getElementById("account");
-  el.style.display = el.style.display === "block" ? "none" : "block";
-}
-
-// 복사 버튼
+/* 계좌 복사 */
 document.querySelectorAll('.account-copy-btn, .address-copy-btn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const text = btn.getAttribute('data-copy');
@@ -432,9 +406,24 @@ window.addEventListener('load', fadeInOnScroll);
 
 /* 갤러리 다운로드 방지 */
 document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
-  img.addEventListener('contextmenu', e=>e.preventDefault()); // 오른쪽 클릭
-  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false}); // 모바일 길게 누르기
+  img.addEventListener('contextmenu', e=>e.preventDefault());
+  img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false});
 });
+
+/* 방명록 */
+function addGuest(){
+  const name = document.getElementById("guestName").value.trim();
+  const message = document.getElementById("guestMessage").value.trim();
+  if(!name || !message){ alert("이름과 메시지를 입력해주세요!"); return; }
+  const guestList = document.getElementById("guestList");
+  const div = document.createElement("div");
+  div.className = "guest-item";
+  div.innerHTML = `<span style="font-weight:500; margin-right:6px;">${name}</span>: <span>${message}</span>`;
+  guestList.prepend(div);
+  document.getElementById("guestName").value = "";
+  document.getElementById("guestMessage").value = "";
+}
 </script>
+
 </body>
 </html>
