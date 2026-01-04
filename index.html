@@ -344,18 +344,6 @@ section {
   </div>
 </section>
 
-<!-- 방명록 -->
-<section class="fade-scroll">
-  <div class="divider"></div>
-  <div class="names">📬 방명록</div>
-  <div id="guestbook" style="margin-top:12px;">
-    <input type="text" id="guestName" placeholder="이름" style="padding:6px; width:30%; max-width:120px;">
-    <input type="text" id="guestMessage" placeholder="메시지" style="padding:6px; width:50%; max-width:240px;">
-    <button id="guestSubmit" style="padding:6px 12px;">등록</button>
-    <div id="guestList" style="margin-top:12px; text-align:left; max-width:480px; margin:auto;"></div>
-  </div>
-</section>
-
 <!-- BGM 버튼 + 오디오 -->
 <div id="bgmToggle">🔈</div>
 <audio id="bgmAudio" loop>
@@ -429,21 +417,6 @@ document.querySelectorAll('.gallery img, .swiper-slide img').forEach(img=>{
   img.addEventListener('touchstart', e=>e.preventDefault(), {passive:false}); // 모바일 길게 누르기
 });
 
-/* 방명록 */
-document.getElementById("guestSubmit").addEventListener("click", ()=>{
-  const name = document.getElementById("guestName").value.trim();
-  const msg = document.getElementById("guestMessage").value.trim();
-  if(name && msg){
-    const list = document.getElementById("guestList");
-    const entry = document.createElement("div");
-    entry.innerHTML = `<strong>${name}</strong>: ${msg}`;
-    list.prepend(entry);
-    document.getElementById("guestName").value = '';
-    document.getElementById("guestMessage").value = '';
-  } else {
-    alert("이름과 메시지를 모두 입력해주세요.");
-  }
-});
 </script>
 </body>
 </html>
