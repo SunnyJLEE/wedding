@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>이선재 · 장윤석 결혼합니다</title>
 
-<!-- Font -->
+<!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -24,115 +25,124 @@ section {
 h1 {
   font-size: 26px;
   letter-spacing: 2px;
+  font-weight: 400;
 }
 
 .subtitle {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #555;
-  margin: 16px 0;
-}
-
-.names {
-  font-size: 30px;
-  font-weight: 500;
-  margin-top: 20px;
-}
-
-.date {
-  font-size: 15px;
-  color: #666;
-  margin-top: 8px;
-}
-
-#countdown {
   margin-top: 14px;
-  font-size: 16px;
-  letter-spacing: 1px;
-}
-
-.divider {
-  width: 40px;
-  height: 1px;
-  background: #aaa;
-  margin: 24px auto;
 }
 
 /* 메인 사진 */
 .main-photo {
   width: 100%;
-  max-height: 420px;
+  max-height: 360px;
   object-fit: cover;
-  border-radius: 6px;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
-  /* PC 화면에서 메인 사진 높이 줄이기 */
-@media (min-width: 1024px) {
-  .main-photo {
-    max-height: 320px;
-  }
+/* 부모님 */
+.parents {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #666;
+  margin-top: 16px;
 }
 
-
-/* 스와이프 갤러리 */
-.swiper {
-  display: flex;
-  overflow-x: auto;
-  gap: 8px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+.names {
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 500;
 }
 
-.swiper img {
-  width: 70%;
-  flex-shrink: 0;
-  border-radius: 6px;
-  scroll-snap-align: center;
+.date {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #666;
+}
+
+/* 디데이 */
+.dday {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 /* 장소 */
 .location {
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.links a {
-  display: inline-block;
-  margin: 8px 10px;
-  font-size: 14px;
-  text-decoration: underline;
-  color: #555;
-}
-
-/* 계좌 */
-.account {
+  margin-top: 18px;
   font-size: 18px;
-  line-height: 2.2;
+  font-weight: 500;
 }
 
-.btn {
-  margin-top: 10px;
-  padding: 8px 18px;
-  border: 1px solid #aaa;
-  background: none;
+.address {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.map-links a {
+  font-size: 14px;
+  color: #555;
+  text-decoration: underline;
+  margin: 0 6px;
+}
+
+/* 구분선 */
+.divider {
+  width: 36px;
+  height: 1px;
+  background: #aaa;
+  margin: 32px auto;
+}
+
+/* 갤러리 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-/* BGM */
-#bgmBtn {
+/* 라이트박스 */
+.lightbox {
+  display: none;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 14px;
-  border-radius: 50%;
-  border: 1px solid #aaa;
-  background: #fff;
-  font-size: 14px;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+/* 토글 */
+.toggle {
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.account {
+  display: none;
+  margin-top: 16px;
+  line-height: 2.1;
+  font-size: 17px;
 }
 
 .footer {
-  margin: 36px 0 20px;
+  margin-top: 32px;
   font-size: 13px;
   color: #777;
 }
@@ -142,7 +152,7 @@ h1 {
 <body>
 
 <section>
-  <h1>WEDDING DAY</h1>
+  <h1>SAVE THE DATE</h1>
 
   <div class="subtitle">
     어느 날 같은 세상을 바라보는 사람을 만났습니다.<br/>
@@ -151,51 +161,51 @@ h1 {
 
   <img src="images/main.jpeg" class="main-photo">
 
+  <div class="parents">
+    장진명 · 김경연의 아들 <strong>장윤석</strong><br/>
+    이문주 · 임흥구의 딸 <strong>이선재</strong>
+  </div>
+
   <div class="names">이선재 · 장윤석</div>
+
   <div class="date">2026년 6월 20일 토요일 오후 12시 30분</div>
-  <div id="countdown"></div>
-</section>
+  <div class="dday" id="dday"></div>
 
-<section>
-  <div class="divider"></div>
+  <div class="location">🎉 AT포레 웨딩홀</div>
+  <div class="address">서울 서초구 양재동</div>
 
-  <div class="swiper">
-    <img src="images/photo1.jpg">
-    <img src="images/photo2.jpg">
-    <img src="images/photo3.jpg">
-    <img src="images/photo4.jpg">
+  <div class="map-links">
+    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">네이버 지도 보기</a>
   </div>
 </section>
 
 <section>
   <div class="divider"></div>
 
-  <div class="location">
-    AT포레 웨딩홀<br/>
-    서울 서초구 양재동
-  </div>
-
-  <div class="links">
-    <a href="images/map.jpeg" target="_blank">약도 보기</a>
-    <a href="https://map.naver.com/v5/search/AT포레%20웨딩홀" target="_blank">
-      네이버 지도 보기
-    </a>
+  <div class="gallery">
+    <img src="images/photo1.jpg" onclick="openLightbox(this.src)">
+    <img src="images/photo2.jpg" onclick="openLightbox(this.src)">
+    <img src="images/photo3.jpg" onclick="openLightbox(this.src)">
+    <img src="images/photo4.jpg" onclick="openLightbox(this.src)">
+    <img src="images/photo5.jpg" onclick="openLightbox(this.src)">
+    <img src="images/photo6.jpg" onclick="openLightbox(this.src)">
   </div>
 </section>
+
+<div class="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg">
+</div>
 
 <section>
   <div class="divider"></div>
 
-  <div class="account">
-    <strong>마음 전하실 곳</strong><br/><br/>
+  <div class="toggle" onclick="toggleAccount()">💌 마음 전하실 곳</div>
 
+  <div class="account" id="account">
     신부 이선재<br/>
-    우리은행 1234-5678-92134<br/>
-    <button class="btn" onclick="copyText('1234-5678-92134')">복사</button><br/><br/>
-
+    우리은행 1234-5678-92134<br/><br/>
     신랑 장윤석<br/>
-    국민은행 0234-346-23466<br/>
-    <button class="btn" onclick="copyText('0234-346-23466')">복사</button>
+    국민은행 0234-346-23466
   </div>
 
   <div class="footer">
@@ -204,38 +214,35 @@ h1 {
 </section>
 
 <!-- BGM -->
-<audio id="bgm" loop>
+<audio autoplay loop>
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
-<button id="bgmBtn" onclick="toggleBgm()">♪</button>
 
 <script>
-// 디데이
+/* 디데이 */
 const target = new Date("2026-06-20T12:30:00");
+const ddayEl = document.getElementById("dday");
+
 setInterval(() => {
   const now = new Date();
   const diff = target - now;
-  const d = Math.floor(diff / (1000*60*60*24));
-  document.getElementById("countdown").innerText =
-    d >= 0 ? `D-${d}` : "오늘 결혼합니다";
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  ddayEl.innerText = `D-${days}`;
 }, 1000);
 
-// 계좌 복사
-function copyText(t) {
-  navigator.clipboard.writeText(t);
-  alert("복사되었습니다");
+/* 라이트박스 */
+function openLightbox(src) {
+  document.getElementById("lightboxImg").src = src;
+  document.querySelector(".lightbox").style.display = "flex";
+}
+function closeLightbox() {
+  document.querySelector(".lightbox").style.display = "none";
 }
 
-// BGM
-const bgm = document.getElementById("bgm");
-let playing = false;
-function toggleBgm() {
-  if (playing) {
-    bgm.pause();
-  } else {
-    bgm.play();
-  }
-  playing = !playing;
+/* 계좌 토글 */
+function toggleAccount() {
+  const el = document.getElementById("account");
+  el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
 
