@@ -238,7 +238,7 @@ h1 {
   <div class="location">🚗 오시는 길<br/>AT포레 웨딩홀</div>
  <div class="address">
     서울특별시 서초구 강남대로 27
-    <button class="copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
+    <button class="address-copy-btn" data-copy="서울특별시 서초구 강남대로 27">복사</button>
   </div> 
   <div class="map-links">
     <!-- 네이버 지도 버튼 -->
@@ -287,11 +287,11 @@ h1 {
   <div class="account" id="account">
     신부 이선재<br/>
     우리은행 1234-5678-92134
-    <button class="copy-btn" data-account="1234-5678-92134">복사</button>
+    <button class="account-copy-btn" data-copy="우리은행 1234-5678-92134">복사</button>
     <br/><br/>
     신랑 장윤석<br/>
     국민은행 0234-346-23466
-    <button class="copy-btn" data-account="0234-346-23466">복사</button>
+    <button class="account-copy-btn" data-copy="국민은행 0234-346-23466">복사</button>
   </div>
 
   <div class="footer">
@@ -332,16 +332,27 @@ function toggleAccount() {
   const el = document.getElementById("account");
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
-
-/* 계좌 복사 */
-document.querySelectorAll('.copy-btn').forEach(btn => {
+  
+// 계좌 복사 버튼
+document.querySelectorAll('.account-copy-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const account = btn.getAttribute('data-account');
-    navigator.clipboard.writeText(account).then(() => {
-      alert('계좌번호가 복사되었습니다: ' + account);
+    const text = btn.getAttribute('data-copy');
+    navigator.clipboard.writeText(text).then(() => {
+      alert('계좌번호가 복사되었습니다: ' + text);
     });
   });
 });
+
+// 주소 복사 버튼
+document.querySelectorAll('.address-copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.getAttribute('data-copy');
+    navigator.clipboard.writeText(text).then(() => {
+      alert('주소가 복사되었습니다: ' + text);
+    });
+  });
+});
+
 
 /* Swiper */
 const swiper = new Swiper(".swiper", {
@@ -399,15 +410,6 @@ const fadeInOnScroll = () => {
 window.addEventListener('scroll', fadeInOnScroll);
 window.addEventListener('load', fadeInOnScroll);
 
-// 주소 복사 버튼
-document.querySelectorAll('.copy-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const text = btn.getAttribute('data-copy');
-    navigator.clipboard.writeText(text).then(() => {
-      alert('복사되었습니다: ' + text);
-    });
-  });
-});
 
 </script>
 </body>
